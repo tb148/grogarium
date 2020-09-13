@@ -1,0 +1,1 @@
+bot: python bot.py --token $BOT_TOKEN
