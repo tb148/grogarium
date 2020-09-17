@@ -49,6 +49,9 @@ roll:
   limits:
     count: 400
     size: 400
+  default:
+    count: 1
+    size: 6
   one-faced: false
   warnings:
     limits:

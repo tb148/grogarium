@@ -26,7 +26,7 @@ bot = commands.Bot(
     enabled=config["roll"]["enabled"],
     hidden=config["roll"]["hidden"],
 )
-async def roll(ctx, count: int = 1, size: int = 6):
+async def roll(ctx, count: int = config["roll"]["default"]["count"], size: int = config["roll"]["default"]["size"]):
     if (
         count > config["roll"]["limits"]["count"]
         or size > config["roll"]["limits"]["size"]
