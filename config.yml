@@ -41,9 +41,9 @@ owners:
 roll:
   enabled: true
   hidden: false
-  help: Roll <count> dice with <size> faces each.
+  help: Roll (count) dice with (size) faces each.
   brief: Roll XdY
-  usage: <count> <size>
+  usage: "[count] [size]"
   aliases:
     - dice
   limits:
@@ -93,7 +93,7 @@ ping:
   hidden: false
   help: Test the internet connection of the bot.
   brief: Ping
-  usage: ""
+  usage: "[website]"
   aliases:
     - pong
     - test
