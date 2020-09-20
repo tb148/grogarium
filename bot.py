@@ -112,4 +112,5 @@ async def on_command_error(ctx, error):
     )
 
 
+bot.load_extension("util")
 bot.run(token)

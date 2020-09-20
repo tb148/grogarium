@@ -99,3 +99,14 @@ ping:
     - test
     - network
   url: https://discord.com
+util:
+  name: Utilities
+calc:
+  enabled: true
+  hidden: false
+  help: Calculate and/or simplify mathematical expressions. Letters x, y and z may be used.
+  brief: Calculate
+  usage: <expression>
+  aliases:
+    - calculate
+    - math

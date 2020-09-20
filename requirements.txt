@@ -1,3 +1,4 @@
 discord.py[voice]
 aiohttp[speedups]
 pyyaml
+sympy
