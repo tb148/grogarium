@@ -37,10 +37,19 @@ async def roll(
         or count < 1
         or size < 1
     ):
-        await ctx.send(random.choice(config["roll"]["warnings"]["limits"]))
+        await ctx.send(
+            "{} :game_die: {}".format(
+                ctx.author.mention, random.choice(config["roll"]["warnings"]["limits"])
+            )
+        )
         return
     if size == 1 and not config["roll"]["one-faced"]:
-        await ctx.send(random.choice(config["roll"]["warnings"]["one-faced"]))
+        await ctx.send(
+            "{} :game_die: {}".format(
+                ctx.author.mention,
+                random.choice(config["roll"]["warnings"]["one-faced"]),
+            )
+        )
         return
     dice = list()
     tot = 0
