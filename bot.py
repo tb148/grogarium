@@ -106,7 +106,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     await ctx.channel.send(
-        "{} {}\n{}".format(
+        "{} {}\n```{}```".format(
             ctx.author.mention, random.choice(config["error"]), type(error)
         )
     )
