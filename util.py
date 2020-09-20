@@ -1,4 +1,4 @@
-import discord, yaml, sympy
+import discord, yaml, sympy, googletrans
 from discord.ext import commands
 
 config = yaml.full_load(open("config.yml"))
@@ -27,6 +27,21 @@ class Util(commands.Cog, name=config["util"]["name"]):
                 ctx.author.mention,
                 expression,
                 sympy.simplify(sympy.sympify(expression)),
+            )
+        )
+
+    @commands.command(
+        name="trans",
+        help=config["trans"]["help"],
+        brief=config["trans"]["brief"],
+        aliases=config["trans"]["aliases"],
+        enabled=config["trans"]["enabled"],
+        hidden=config["trans"]["hidden"],
+    )
+    async def trans(self, ctx, text: str, dest: str, src: str = "auto"):
+        await ctx.send(
+            "{} :abc:\n> {}".format(
+                ctx.author.mention, googletrans.Translator().translate(text, dest, src)
             )
         )
 

@@ -110,3 +110,12 @@ calc:
   aliases:
     - calculate
     - math
+trans:
+  enabled: true
+  hidden: false
+  help: Translate a word or sentence to another language.
+  brief: Google translate
+  usage: <text> <dest> [src]
+  aliases:
+    - translate
+    - gt
