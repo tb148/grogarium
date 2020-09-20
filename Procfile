@@ -1,1 +1,1 @@
-bot: python bot.py --token $BOT_TOKEN
+bot: python src/bot.py --token $BOT_TOKEN
