@@ -41,7 +41,8 @@ class Util(commands.Cog, name=config["util"]["name"]):
     async def trans(self, ctx, text: str, dest: str, src: str = "auto"):
         await ctx.send(
             "{} :abc:\n> {}".format(
-                ctx.author.mention, googletrans.Translator().translate(text, dest, src).text
+                ctx.author.mention,
+                googletrans.Translator().translate(text, dest, src).text,
             )
         )
 
