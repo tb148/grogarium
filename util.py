@@ -23,7 +23,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
     async def calc(self, ctx, *, expression: str):
         sympy.symbols("x y z")
         await ctx.send(
-            "{} :1234:\n{} = {}".format(
+            "{} :1234:\n```{} = {}```".format(
                 ctx.author.mention,
                 expression,
                 sympy.simplify(sympy.sympify(expression)),
