@@ -1,4 +1,4 @@
-name: Format code using Prettier
+name: Format code using Black
 on: [push, pull_request]
 
 jobs:
