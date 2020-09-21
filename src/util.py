@@ -14,11 +14,12 @@ class Util(commands.Cog, name=config["util"]["name"]):
 
     @commands.command(
         name="calc",
-        help=config["calc"]["help"],
-        brief=config["calc"]["brief"],
-        aliases=config["calc"]["aliases"],
         enabled=config["calc"]["enabled"],
         hidden=config["calc"]["hidden"],
+        help=config["calc"]["help"],
+        brief=config["calc"]["brief"],
+        usage=config["calc"]["usage"],
+        aliases=config["calc"]["aliases"],
     )
     async def calc(self, ctx, *, expression: str):
         sympy.symbols("x y z")
@@ -32,11 +33,12 @@ class Util(commands.Cog, name=config["util"]["name"]):
 
     @commands.command(
         name="trans",
-        help=config["trans"]["help"],
-        brief=config["trans"]["brief"],
-        aliases=config["trans"]["aliases"],
         enabled=config["trans"]["enabled"],
         hidden=config["trans"]["hidden"],
+        help=config["trans"]["help"],
+        brief=config["trans"]["brief"],
+        usage=config["trans"]["usage"],
+        aliases=config["trans"]["aliases"],
     )
     async def trans(self, ctx, text: str, dest: str, src: str = "auto"):
         await ctx.send(

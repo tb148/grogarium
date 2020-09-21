@@ -20,11 +20,12 @@ bot = commands.Bot(
 
 @bot.command(
     name="roll",
-    help=config["roll"]["help"],
-    brief=config["roll"]["brief"],
-    aliases=config["roll"]["aliases"],
     enabled=config["roll"]["enabled"],
     hidden=config["roll"]["hidden"],
+    help=config["roll"]["help"],
+    brief=config["roll"]["brief"],
+    usage=config["roll"]["usage"],
+    aliases=config["roll"]["aliases"],
 )
 async def roll(
     ctx,
@@ -61,11 +62,12 @@ async def roll(
 
 @bot.command(
     name="8ball",
-    help=config["8ball"]["help"],
-    brief=config["8ball"]["brief"],
-    aliases=config["8ball"]["aliases"],
     enabled=config["8ball"]["enabled"],
     hidden=config["8ball"]["hidden"],
+    help=config["8ball"]["help"],
+    brief=config["8ball"]["brief"],
+    usage=config["8ball"]["usage"],
+    aliases=config["8ball"]["aliases"],
 )
 async def eight_ball(ctx, *, question: str):
     await ctx.send(
@@ -77,11 +79,12 @@ async def eight_ball(ctx, *, question: str):
 
 @bot.command(
     name="ping",
-    help=config["ping"]["help"],
-    brief=config["ping"]["brief"],
-    aliases=config["ping"]["aliases"],
     enabled=config["ping"]["enabled"],
     hidden=config["ping"]["hidden"],
+    help=config["ping"]["help"],
+    brief=config["ping"]["brief"],
+    usage=config["ping"]["usage"],
+    aliases=config["ping"]["aliases"],
 )
 async def ping(ctx, *, url: str = config["ping"]["url"]):
     aio = aiohttp.ClientSession()
