@@ -1,4 +1,4 @@
-import yaml, sympy, googletrans
+import yaml, sympy, googletrans, typing
 from discord.ext import commands
 
 config = yaml.full_load(open("config.yml"))
@@ -40,7 +40,9 @@ class Util(commands.Cog, name=config["util"]["name"]):
         usage=config["trans"]["usage"],
         aliases=config["trans"]["aliases"],
     )
-    async def trans(self, ctx, text: str, dest: str, src: str = "auto"):
+    async def trans(
+        self, ctx, text: str, dest: str, src: typing.Optional[str] = "auto"
+    ):
         await ctx.send(
             "{} :abc:\n> {}".format(
                 ctx.author.mention,

@@ -1,4 +1,4 @@
-import discord, yaml, sys, getopt, random, aiohttp, time
+import discord, yaml, sys, getopt, random, aiohttp, time, typing
 from discord.ext import commands, tasks
 
 config = yaml.full_load(open("config.yml"))
@@ -29,8 +29,8 @@ bot = commands.Bot(
 )
 async def roll(
     ctx,
-    count: int = config["roll"]["default"]["count"],
-    size: int = config["roll"]["default"]["size"],
+    count: typing.Optional[int] = config["roll"]["default"]["count"],
+    size: typing.Optional[int] = config["roll"]["default"]["size"],
 ):
     if (
         count > config["roll"]["limits"]["count"]
@@ -86,7 +86,7 @@ async def eight_ball(ctx, *, question: str):
     usage=config["ping"]["usage"],
     aliases=config["ping"]["aliases"],
 )
-async def ping(ctx, *, url: str = config["ping"]["url"]):
+async def ping(ctx, *, url: typing.Optional[str] = config["ping"]["url"]):
     aio = aiohttp.ClientSession()
     pre = time.time()
     async with aio.get(url):
