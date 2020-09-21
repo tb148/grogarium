@@ -5,6 +5,7 @@ config = yaml.full_load(open("config.yml"))
 
 
 class Util(commands.Cog, name=config["util"]["name"]):
+
     "Utilities that are not designed for fun."
 
     def __init__(self, bot):
