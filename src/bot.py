@@ -51,15 +51,10 @@ async def roll(
             )
         )
         return
-    dice = list()
-    tot = 0
-    for i in range(count):
-        res = random.randint(1, size)
-        tot += res
-        dice.append(str(res))
+    dice = [random.randint(1, size) for _ in range(count)]
     await ctx.send(
         "{} :game_die: You rolled a {}!\n```{}```".format(
-            ctx.author.mention, tot, ", ".join(dice)
+            ctx.author.mention, sum(dice), ", ".join(dice)
         )
     )
 
