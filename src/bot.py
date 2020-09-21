@@ -111,7 +111,7 @@ async def on_ready():
 async def on_command_error(ctx, error):
     await ctx.channel.send(
         "{} {}\n```{}```".format(
-            ctx.author.mention, random.choice(config["error"]), type(error)
+            ctx.author.mention, random.choice(config["error"]), error
         )
     )
 
