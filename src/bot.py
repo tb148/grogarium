@@ -1,4 +1,4 @@
-import discord, yaml, sys, getopt, logging, random, aiohttp, time
+import discord, yaml, sys, getopt, random, aiohttp, time
 from discord.ext import commands, tasks
 
 config = yaml.full_load(open("config.yml"))

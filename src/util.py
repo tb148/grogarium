@@ -1,15 +1,14 @@
-import discord, yaml, sympy, googletrans
+import yaml, sympy, googletrans
 from discord.ext import commands
 
 config = yaml.full_load(open("config.yml"))
 
 
 class Util(commands.Cog, name=config["util"]["name"]):
-    """
-    Utilities that are not designed for fun.
-    """
+    "Utilities that are not designed for fun."
 
     def __init__(self, bot):
+        "Utilities that are not designed for fun."
         self.bot = bot
 
     @commands.command(
