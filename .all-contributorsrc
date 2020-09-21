@@ -1,0 +1,28 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "tb148",
+      "name": "Tony Brown",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/28220642?v=4",
+      "profile": "https://scratch.mit.edu/users/TonyBrown148/",
+      "contributions": [
+        "doc",
+        "code",
+        "bug",
+        "ideas",
+        "infra"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "grogarium",
+  "projectOwner": "tb148",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
