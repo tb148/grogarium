@@ -119,3 +119,14 @@ trans:
   aliases:
     - translate
     - gt
+langs:
+  enabled: true
+  hidden: false
+  help: Output a list that contains all the langcodes you can use.
+  brief: Get the langcodes
+  usage: ""
+  aliases:
+    - lang
+    - langcodes
+    - langcode
+  message: "Here's all the langcodes you can use:"

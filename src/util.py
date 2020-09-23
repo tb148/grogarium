@@ -50,6 +50,28 @@ class Util(commands.Cog, name=config["util"]["name"]):
             )
         )
 
+    @commands.command(
+        name="langs",
+        enabled=config["langs"]["enabled"],
+        hidden=config["langs"]["hidden"],
+        help=config["langs"]["help"],
+        brief=config["langs"]["brief"],
+        usage=config["langs"]["usage"],
+        aliases=config["langs"]["aliases"],
+    )
+    async def langs(self, ctx):
+        await ctx.send(
+            "{} :abc: {}\n{}".format(
+                ctx.author.mention,
+                "\n".join(
+                    [
+                        "{} - {}".format(_, googletrans.LANGUAGES[_])
+                        for _ in googletrans.LANGUAGES
+                    ]
+                ),
+            )
+        )
+
 
 def setup(bot):
     bot.add_cog(Util(bot))
