@@ -15,7 +15,7 @@ Contributions are welcome! Be sure to file an issue first (see above). If you kn
 ## Contributing rules
 
 - Do one thing in a pull request. Open multiple pull requests if you want to add multiple things.
-- Please write [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). So we can take track of what is added each commit.
+- Please write [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). So we can take track of what is added each commit. You can use [Commitizen](https://github.com/commitizen-tools/commitizen) to write them.
 - Format your code using [Prettier](https://prettier.io/) and [Black](https://black.readthedocs.io/en/stable/). So we have a unified codestyle.
 - Don't remove features unless it's necessary. Add an option to disable some feature instead.
 - Keep the configuration file backward compatible all the time.
