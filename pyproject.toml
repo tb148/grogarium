@@ -1,0 +1,18 @@
+[tool]
+[tool.poetry]
+name = "grogarium"
+version = "0.3.0-alpha"
+description = "A discord bot that works."
+license = "GPL-3.0-or-later"
+authors = ["Tony Brown <tb148@tuta.io>"]
+maintainers = ["Tony Brown <tb148@tuta.io>"]
+readme = "README.md"
+repository = "https://github.com/tb148/grogarium/"
+
+[tool.poetry.dependencies]
+python = "==3.*,>=3.6.0"
+aiohttp = {version = "==3.*,>=3.6.0", extras = ["speedups"]}
+"discord.py" = {version = "==1.*,>=1.4.0", extras = ["voice"]}
+googletrans = "==3.*,>=3.0.0"
+pyyaml = "==5.*,>=5.3.0"
+sympy = "==1.*,>=1.6.0"
