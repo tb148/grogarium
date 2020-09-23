@@ -1,5 +1,9 @@
 ## Unreleased
 
+### Fix
+
+- **Utilities**: add missing element in langcode message
+
 ### Feat
 
 - **Utilities**: Add langcode command
