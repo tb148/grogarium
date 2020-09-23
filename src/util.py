@@ -63,6 +63,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
         await ctx.send(
             "{} :abc: {}\n{}".format(
                 ctx.author.mention,
+                config["langs"]["message"],
                 "\n".join(
                     [
                         "{} - {}".format(_, googletrans.LANGUAGES[_])
