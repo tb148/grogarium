@@ -1,7 +1,7 @@
-import discord, yaml, sys, getopt, random, aiohttp, time, typing
+import discord, toml, sys, getopt, random, aiohttp, time, typing
 from discord.ext import commands, tasks
 
-config = yaml.full_load(open("settings.yml"))
+config = toml.load("settings.toml")
 opts, args = getopt.getopt(sys.argv[1:], "t:p:c", ["token=", "prefix=", "case"])
 for opt, arg in opts:
     if opt in ("-t", "--token"):

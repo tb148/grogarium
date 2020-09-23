@@ -1,0 +1,127 @@
+prefix = "!$*"
+case-insensitive = true
+description = "Grogarium - A discord bot that works.\nThis bot is created by TonyBrown148.\nYou can find the source code at here:\nhttps://github.com/tb148/grogarium\n"
+ready = [
+    "Grogar is connected!",
+    "INIT: GROGAR.BOT",
+    "Grogar's body is ready!",
+    "Grogar is ready to roll!",
+    "Grogar is now running.",
+    "Now loading Grogar...",
+    "Grogar is now formatting C:\\ drive...Just kidding!",
+    "Grogar is offlinen't!",
+    "All systems go.",
+    "Grogar is now up and running.",
+    "Grogar: \"Let's do this!\"",
+    "Grogar has entered the chat",
+    "It's a bird! It's a plane! Wait, no, it's just Grogar.",
+]
+status = [
+    "Try !$*help",
+    "Send !$*help",
+    "Type !$*help",
+    "PREFIX = SHIFT + 1,4,8",
+    "Add !$* before commands",
+    "My prefix is !$*",
+    "with the Discord API",
+    "with Python",
+    "with discord.py",
+]
+stat-freq = 10.0
+error = [
+    "What am I expected to do then?",
+    "What are you expecting for me to do?",
+    "Wait what? Are you serious?",
+    "Don't test me anymore! I am stable!",
+    "Please DO NOT open an issue for this.",
+]
+owners = [728198677050425424]
+
+[roll]
+enabled = true
+hidden = false
+help = "Roll (count) dice with (size) faces each."
+brief = "Roll XdY"
+usage = "[count] [size]"
+aliases = ["dice"]
+one-faced = false
+
+[roll.limits]
+count = 400
+size = 400
+
+[roll.default]
+count = 1
+size = 6
+
+[roll.warnings]
+limits = [
+    "Are you testing my functionalities or what?",
+    "Don't test me anymore! I am stable!",
+]
+one-faced = [
+    "Wow! You can predict the future!",
+    "Guess what the answer is? Wow, you get it right!",
+]
+
+[8ball]
+enabled = true
+hidden = false
+help = "Ask a question, get an answer."
+brief = "Answer questions"
+usage = "<question>"
+aliases = ["8_ball", "8-ball", "eightball", "eight-ball", "eight_ball"]
+answers = [
+    "Yes",
+    "It is certain",
+    "Of course",
+    "100 percent!",
+    "Definitely",
+    "Maybe",
+    "Perhaps",
+    "Not sure",
+    "Reply hazy, try again",
+    "Who knows?",
+    "No",
+    "Of course not",
+    "Never",
+    "Absolutely not",
+    "Not a chance",
+]
+
+[ping]
+enabled = true
+hidden = false
+help = "Test the internet connection of the bot."
+brief = "Ping"
+usage = "[website]"
+aliases = ["pong", "test", "network"]
+url = "https://discord.com"
+
+[util]
+name = "Utilities"
+
+[calc]
+enabled = true
+hidden = false
+help = "Calculate and/or simplify mathematical expressions. Letters x, y and z may be used."
+brief = "Calculate"
+usage = "<expression>"
+aliases = ["calculate", "math"]
+
+[trans]
+enabled = true
+hidden = false
+help = "Translate a word or sentence to another language."
+brief = "Google translate"
+usage = "<text> <dest> [src]"
+aliases = ["translate", "gt"]
+
+[langs]
+enabled = true
+hidden = false
+help = "Output a list that contains all the langcodes you can use."
+brief = "Get the langcodes"
+usage = ""
+aliases = ["lang", "langcodes", "langcode"]
+message = "Here's all the langcodes you can use:"

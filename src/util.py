@@ -1,7 +1,7 @@
-import yaml, sympy, googletrans, typing
+import toml, sympy, googletrans, typing
 from discord.ext import commands
 
-config = yaml.full_load(open("settings.yml"))
+config = toml.load("settings.toml")
 
 
 class Util(commands.Cog, name=config["util"]["name"]):
