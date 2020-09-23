@@ -23,8 +23,11 @@ A Discord bot that works.
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
 <!-- prettier-ignore-start -->
+
 <!-- markdownlint-disable -->
+
 <table>
   <tr>
     <td align="center"><a href="https://scratch.mit.edu/users/TonyBrown148/"><img src="https://avatars1.githubusercontent.com/u/28220642?v=4" width="100px;" alt=""/><br /><sub><b>Tony Brown</b></sub></a><br /><a href="https://github.com/tb148/grogarium/commits?author=tb148" title="Documentation">📖</a> <a href="https://github.com/tb148/grogarium/commits?author=tb148" title="Code">💻</a> <a href="https://github.com/tb148/grogarium/issues?q=author%3Atb148" title="Bug reports">🐛</a> <a href="#ideas-tb148" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-tb148" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
@@ -32,6 +35,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 </table>
 
 <!-- markdownlint-enable -->
+
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
