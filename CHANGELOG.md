@@ -1,5 +1,9 @@
 ## Unreleased
 
+### Feat
+
+- **Utilities**: Add langcode command
+
 ## v0.2.0 (2020-09-22)
 
 ### Refactor
