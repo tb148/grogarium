@@ -1,5 +1,5 @@
-aiohttp[speedups]==3.*,>=3.6.0
-discord.py[voice]==1.*,>=1.4.0
+aiohttp[speedups]==3.*,>=3.6.2
+discord.py[voice]==1.*,>=1.4.1
 googletrans==3.*,>=3.0.0
-sympy==1.*,>=1.6.0
-toml>=0.10.1
+sympy==1.*,>=1.6.2
+toml==0.*,>=0.10.1
