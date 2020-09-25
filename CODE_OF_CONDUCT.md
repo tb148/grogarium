@@ -51,7 +51,8 @@ If you believe someone is violating the code of conduct, we ask that you report 
   - Posting sexually explicit or violent material.
   - Posting (or threatening to post) other people's personally identifying information ("doxing").
   - Personal insults, especially those using racist or sexist terms.
-  - Unwelcome sexual attention. \* Advocating for, or encouraging, any of the above behavior.
+  - Unwelcome sexual attention.
+  - Advocating for, or encouraging, any of the above behavior.
 
 - In general, if someone asks you to stop, then stop. Persisting in such behavior after being asked to stop is considered harassment.
 
