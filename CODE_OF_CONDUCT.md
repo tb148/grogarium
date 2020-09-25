@@ -15,6 +15,16 @@ This isn't an exhaustive list of things that you can't do. Rather, take it in
 the spirit in which it's intended - a guide to make it easier to communicate and
 participate in the community.
 
+This code of conduct applies to all spaces managed by the Grogarium project.
+This includes Doscord channels, mailing lists, bug trackers,
+Grogarium events such as the developer meetings and socials, and any other forums created
+by the project that the community uses for communication. It applies to all of
+your communication and conduct in these spaces, including emails, chats, things
+you say, slides, videos, posters, signs, or even t-shirts you display in these
+spaces. In addition, violations of this code outside these spaces may, in rare
+cases, affect a person's ability to participate within them, when the conduct
+amounts to an egregious violation of this code.
+
 If you believe someone is violating the code of conduct, we ask that you report it by emailing [tb148@tuta.io](mailto:tb148@tuta.io).
 
 - **Be friendly and patient.**
