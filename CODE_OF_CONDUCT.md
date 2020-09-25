@@ -15,9 +15,10 @@ This isn't an exhaustive list of things that you can't do. Rather, take it in
 the spirit in which it's intended - a guide to make it easier to communicate and
 participate in the community.
 
-If you believe someone is violating the code of conduct, we ask that you report it by emailing tb148@tuta.io.
+If you believe someone is violating the code of conduct, we ask that you report it by emailing <tb148@tuta.io>.
 
 - **Be friendly and patient.**
+
 - **Be welcoming.**
   We strive to be a community that welcomes and supports people of all backgrounds
   and identities. This includes, but is not limited to members of any race,
@@ -25,11 +26,13 @@ If you believe someone is violating the code of conduct, we ask that you report 
   economic class, educational level, sex, sexual orientation, gender identity and
   expression, age, size, family status, political belief, religion or lack
   thereof, and mental and physical ability.
+
 - **Be considerate.**
   Your work will be used by other people, and you in turn will depend on the work
   of others. Any decision you take will affect users and colleagues, and you
   should take those consequences into account. Remember that we're a world-wide
   community, so you might not be communicating in someone else's primary language.
+
 - **Be respectful.**
   Not all of us will agree all the time, but disagreement is no excuse for poor
   behavior and poor manners. We might all experience some frustration now and
@@ -38,16 +41,19 @@ If you believe someone is violating the code of conduct, we ask that you report 
   threatened is not a productive one. Members of the Grogarium
   community should be respectful when dealing with other members as well as with
   people outside the Grogarium community.
+
 - **Be careful in the words that you choose and be kind to others.**
   Do not insult or put down other participants. Harassment and other exclusionary
   behavior aren't acceptable. This includes, but is not limited to:
-  _ Violent threats or language directed against another person.
-  _ Discriminatory jokes and language.
-  _ Posting sexually explicit or violent material.
-  _ Posting (or threatening to post) other people's personally identifying information ("doxing").
-  _ Personal insults, especially those using racist or sexist terms.
-  _ Unwelcome sexual attention. \* Advocating for, or encouraging, any of the above behavior.
+  - Violent threats or language directed against another person.
+  - Discriminatory jokes and language.
+  - Posting sexually explicit or violent material.
+  -  Posting (or threatening to post) other people's personally identifying information ("doxing").
+  - Personal insults, especially those using racist or sexist terms.
+  - Unwelcome sexual attention. \* Advocating for, or encouraging, any of the above behavior.
+
 - In general, if someone asks you to stop, then stop. Persisting in such behavior after being asked to stop is considered harassment.
+
 - **When we disagree, try to understand why.**
   Disagreements, both social and technical, happen all the time and Grogarium
   is no exception. It is important that we resolve disagreements and differing
