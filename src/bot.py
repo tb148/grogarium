@@ -1,17 +1,23 @@
-import discord, toml, sys, getopt, random, aiohttp, time, typing
+import discord, toml, argparse, random, aiohttp, time, typing
 from discord.ext import commands, tasks
 
 config = toml.load("config.toml")
-opts, args = getopt.getopt(sys.argv[1:], "t:p:c", ["token=", "prefix=", "case"])
-for opt, arg in opts:
-    if opt in ("-t", "--token"):
-        token = arg
-    elif opt in ("-p", "--prefix"):
-        config["prefix"] = arg
-    elif opt in ("-c", "--case"):
-        config["case-insensitive"] = True
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-t", "--token", metavar="TOKEN", help="Your bot token. Keep this secret."
+)
+parser.add_argument(
+    "-p",
+    "--prefix",
+    metavar="PREFIX",
+    default=config["prefix"],
+    help="Bot prefix. Used to invoke the bot commands. Defaults to !$*",
+)
+args = parser.parse_args()
+token, prefix = args.token, args.prefix
 bot = commands.Bot(
-    command_prefix=config["prefix"],
+    command_prefix=prefix,
     case_insensitive=config["case-insensitive"],
     description=config["description"],
     owner_ids=config["owners"],

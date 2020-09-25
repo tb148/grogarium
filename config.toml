@@ -1,6 +1,9 @@
 prefix = "!$*"
 case-insensitive = true
-description = "Grogarium - A discord bot that works.\nThis bot is created by TonyBrown148.\nYou can find the source code at here:\nhttps://github.com/tb148/grogarium\n"
+description = """Grogarium - A discord bot that works.
+This bot is created by TonyBrown148.
+You can find the source code at here:
+https://github.com/tb148/grogarium\n"""
 ready = [
     "Grogar is connected!",
     "INIT: GROGAR.BOT",
