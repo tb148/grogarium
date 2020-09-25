@@ -1,7 +1,7 @@
 import discord, toml, sys, getopt, random, aiohttp, time, typing
 from discord.ext import commands, tasks
 
-config = toml.load("settings.toml")
+config = toml.load("config.toml")
 opts, args = getopt.getopt(sys.argv[1:], "t:p:c", ["token=", "prefix=", "case"])
 for opt, arg in opts:
     if opt in ("-t", "--token"):

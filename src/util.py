@@ -1,7 +1,7 @@
 import toml, sympy, googletrans, typing
 from discord.ext import commands
 
-config = toml.load("settings.toml")
+config = toml.load("config.toml")
 
 
 class Util(commands.Cog, name=config["util"]["name"]):
