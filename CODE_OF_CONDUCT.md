@@ -15,7 +15,7 @@ This isn't an exhaustive list of things that you can't do. Rather, take it in
 the spirit in which it's intended - a guide to make it easier to communicate and
 participate in the community.
 
-If you believe someone is violating the code of conduct, we ask that you report it by emailing <tb148@tuta.io>.
+If you believe someone is violating the code of conduct, we ask that you report it by emailing [tb148@tuta.io](mailto:tb148@tuta.io).
 
 - **Be friendly and patient.**
 
