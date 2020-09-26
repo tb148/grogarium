@@ -33,8 +33,8 @@ parser.add_argument(
     type=open,
     help="The path to store the logs.",
 )
-args = parser.parse_args()
-token, prefix, verbosity, logfile = args.token, args.prefix, args.verbose, args.log
+arg = parser.parse_args()
+token, prefix, verbosity, logfile = arg.token, arg.prefix, arg.verbose, arg.log
 logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.Bot(
     command_prefix=prefix,
@@ -53,32 +53,51 @@ bot = commands.Bot(
     usage=config["roll"]["usage"],
     aliases=config["roll"]["aliases"],
 )
-async def roll(
-    ctx,
-    count: typing.Optional[int] = config["roll"]["default"]["count"],
-    size: typing.Optional[int] = config["roll"]["default"]["size"],
-):
-    if (
-        count > config["roll"]["limits"]["count"]
-        or size > config["roll"]["limits"]["size"]
-        or count < 1
-        or size < 1
-    ):
-        await ctx.send(
-            "{} :game_die: {}".format(
-                ctx.author.mention, random.choice(config["roll"]["warnings"]["limits"])
+async def roll(ctx, args: Greedy[int] = [6]):
+    if len(args) == 2:
+        count = args[0]
+        size = args[1]
+        if (
+            count > config["roll"]["limits"]["count"]
+            or size > config["roll"]["limits"]["size"]
+            or count < 1
+            or size < 1
+        ):
+            await ctx.send(
+                "{} :game_die: {}".format(
+                    ctx.author.mention,
+                    random.choice(config["roll"]["warnings"]["limits"]),
+                )
             )
-        )
-        return
-    if size == 1 and not config["roll"]["one-faced"]:
-        await ctx.send(
-            "{} :game_die: {}".format(
-                ctx.author.mention,
-                random.choice(config["roll"]["warnings"]["one-faced"]),
+            return
+        if size == 1 and not config["roll"]["one-faced"]:
+            await ctx.send(
+                "{} :game_die: {}".format(
+                    ctx.author.mention,
+                    random.choice(config["roll"]["warnings"]["one-faced"]),
+                )
             )
-        )
-        return
-    dice = [random.randint(1, size) for _ in range(count)]
+            return
+        dice = [random.randint(1, size) for _ in range(count)]
+    else:
+        for size in args:
+            if size > config["roll"]["limits"]["size"] or size < 1:
+                await ctx.send(
+                    "{} :game_die: {}".format(
+                        ctx.author.mention,
+                        random.choice(config["roll"]["warnings"]["limits"]),
+                    )
+                )
+                return
+            if size == 1 and not config["roll"]["one-faced"]:
+                await ctx.send(
+                    "{} :game_die: {}".format(
+                        ctx.author.mention,
+                        random.choice(config["roll"]["warnings"]["one-faced"]),
+                    )
+                )
+                return
+        dice = [random.randint(1, _) for _ in args]
     await ctx.send(
         "{} :game_die: You rolled a {}!\n```{}```".format(
             ctx.author.mention, sum(dice), ", ".join([str(_) for _ in dice])
