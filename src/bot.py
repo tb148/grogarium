@@ -21,15 +21,17 @@ parser.add_argument(
 parser.add_argument(
     "-v",
     "--verbose",
+    metavar="VERBOSITY",
     default=1,
     help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
 )
 parser.add_argument(
     "-l",
     "--log",
+    metavar="LOGFILE",
     default=config["logfile"],
     type=open,
-    help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
+    help="The path to store the logs.",
 )
 args = parser.parse_args()
 token, prefix, verbosity, logfile = args.token, args.prefix, args.verbose, args.log
