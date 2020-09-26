@@ -39,6 +39,7 @@ error = [
     "Please DO NOT open an issue for this.",
 ]
 owners = [728198677050425424]
+logfile = "grogar.log"
 
 [roll]
 enabled = true

@@ -1,11 +1,15 @@
-import discord, toml, argparse, random, aiohttp, time, typing
+import discord, toml, argparse, logging, random, aiohttp, time, typing
 from discord.ext import commands, tasks
 
 config = toml.load("config.toml")
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "-t", "--token", metavar="TOKEN", help="Your bot token. Keep this secret."
+    "-t",
+    "--token",
+    metavar="TOKEN",
+    required=True,
+    help="Your bot token. Keep this secret.",
 )
 parser.add_argument(
     "-p",
@@ -14,8 +18,22 @@ parser.add_argument(
     default=config["prefix"],
     help="Bot prefix. Used to invoke the bot commands. Defaults to !$*",
 )
+parser.add_argument(
+    "-v",
+    "--verbose",
+    default=1,
+    help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
+)
+parser.add_argument(
+    "-l",
+    "--log",
+    default=config["logfile"],
+    type=open,
+    help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
+)
 args = parser.parse_args()
-token, prefix = args.token, args.prefix
+token, prefix, verbosity, logfile = args.token, args.prefix, args.verbose, args.log
+logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.Bot(
     command_prefix=prefix,
     case_insensitive=config["case-insensitive"],
