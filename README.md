@@ -12,7 +12,7 @@
 
 ![GitHub issues](https://img.shields.io/github/issues/tb148/grogarium?logo=github) ![GitHub pull requests](https://img.shields.io/github/issues-pr/tb148/grogarium?logo=github)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/900e0c207e4d493aa2df8bb688553109)](https://app.codacy.com/manual/tb148/grogarium?utm_source=github.com&utm_medium=referral&utm_content=tb148/grogarium&utm_campaign=Badge_Grade_Dashboard) ![GitHub](https://img.shields.io/github/license/tb148/grogarium?logo=github) [![Discord](https://img.shields.io/discord/751395910831046691?logo=discord&logoColor=ffffff)](https://discord.gg/k2c5sWb)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/900e0c207e4d493aa2df8bb688553109)](https://app.codacy.com/manual/tb148/grogarium?utm_source=github.com&utm_medium=referral&utm_content=tb148/grogarium&utm_campaign=Badge_Grade_Dashboard) ![GitHub](https://img.shields.io/github/license/tb148/grogarium?logo=github) [![Discord](https://img.shields.io/discord/751395910831046691?logo=discord&logoColor=ffffff)](https://discord.gg/k2c5sWb) [![Run on Repl.it](https://repl.it/badge/github/tb148/grogarium)](https://repl.it/github/tb148/grogarium)
 
 A Discord bot that works.
 
