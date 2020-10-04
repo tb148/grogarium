@@ -53,51 +53,38 @@ bot = commands.Bot(
     usage=config["roll"]["usage"],
     aliases=config["roll"]["aliases"],
 )
-async def roll(ctx, args: Greedy[int] = [6]):
-    if len(args) == 2:
-        count = args[0]
-        size = args[1]
-        if (
-            count > config["roll"]["limits"]["count"]
-            or size > config["roll"]["limits"]["size"]
-            or count < 1
-            or size < 1
-        ):
+async def roll(ctx, sizes: Greedy[int] = [6]):
+    if len(sizes) == 2:
+        if sizes[0] < 1 or sizes[1] > config["roll"]["limits"]["count"]:
             await ctx.send(
                 "{} :game_die: {}".format(
-                    ctx.author.mention,
-                    random.choice(config["roll"]["warnings"]["limits"]),
+                    random.choice(config["roll"]["warnings"]["limits"])
                 )
             )
-            return
-        if size == 1 and not config["roll"]["one-faced"]:
-            await ctx.send(
-                "{} :game_die: {}".format(
-                    ctx.author.mention,
-                    random.choice(config["roll"]["warnings"]["one-faced"]),
-                )
+        sizes = [sizes[1] for _ in range(1, sizes[0])]
+    if (
+        len(sizes) == 0
+        or len(sizes) > config["roll"]["limits"]["count"]
+        or min(sizes) < 1
+        or max(sizes) > config["roll"]["limits"]["size"]
+    ):
+        await ctx.send(
+            "{} :game_die: {}".format(
+                random.choice(config["roll"]["warnings"]["limits"])
             )
-            return
-        dice = [random.randint(1, size) for _ in range(count)]
-    else:
-        for size in args:
-            if size > config["roll"]["limits"]["size"] or size < 1:
-                await ctx.send(
-                    "{} :game_die: {}".format(
-                        ctx.author.mention,
-                        random.choice(config["roll"]["warnings"]["limits"]),
-                    )
-                )
-                return
-            if size == 1 and not config["roll"]["one-faced"]:
-                await ctx.send(
-                    "{} :game_die: {}".format(
-                        ctx.author.mention,
-                        random.choice(config["roll"]["warnings"]["one-faced"]),
-                    )
-                )
-                return
-        dice = [random.randint(1, _) for _ in args]
+        )
+    if (
+        max(sizes) == 1
+        and not config["roll"]["one-faced"]["max"]
+        or min(sizes) == 1
+        and not config["roll"]["one-faced"]["min"]
+    ):
+        await ctx.send(
+            "{} :game_die: {}".format(
+                random.choice(config["roll"]["warnings"]["one-faced"])
+            )
+        )
+    dice = [random.randint(1, _) for _ in sizes]
     await ctx.send(
         "{} :game_die: You rolled a {}!\n```{}```".format(
             ctx.author.mention, sum(dice), ", ".join([str(_) for _ in dice])

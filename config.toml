@@ -48,7 +48,10 @@ help = "Roll (count) dice with (size) faces each."
 brief = "Roll XdY"
 usage = "[count] [size]"
 aliases = ["dice"]
-one-faced = false
+
+[roll.one-faced]
+min = false
+max = false
 
 [roll.limits]
 count = 400
