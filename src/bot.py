@@ -21,8 +21,8 @@ parser.add_argument(
 parser.add_argument(
     "-v",
     "--verbose",
-    metavar="VERBOSITY",
     default=1,
+    action="count",
     help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
 )
 parser.add_argument(
@@ -30,7 +30,6 @@ parser.add_argument(
     "--log",
     metavar="LOGFILE",
     default=config["logfile"],
-    type=open,
     help="The path to store the logs.",
 )
 arg = parser.parse_args()
@@ -53,7 +52,7 @@ bot = commands.Bot(
     usage=config["roll"]["usage"],
     aliases=config["roll"]["aliases"],
 )
-async def roll(ctx, sizes: Greedy[int] = [6]):
+async def roll(ctx, sizes: commands.Greedy[int] = [6]):
     if len(sizes) == 2:
         if sizes[0] < 1 or sizes[1] > config["roll"]["limits"]["count"]:
             await ctx.send(
