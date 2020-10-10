@@ -1,6 +1,7 @@
-"The main file for the bot."
+"""The main file for the bot."""
 import argparse
 import logging
+import os
 import random
 
 import discord
@@ -52,7 +53,7 @@ bot = commands.Bot(
     aliases=config["roll"]["aliases"],
 )
 async def roll(ctx, sizes: commands.Greedy[int]):
-    "Roll some dice."
+    """Roll some dice."""
     if len(sizes) == 0:
         sizes = [6]
     if len(sizes) == 2:
@@ -104,7 +105,7 @@ async def roll(ctx, sizes: commands.Greedy[int]):
     aliases=config["8ball"]["aliases"],
 )
 async def eight_ball(ctx, *, question: str):
-    "Ask a question, get an answer."
+    """Ask a question, get an answer."""
     await ctx.send(
         "{} :8ball: {}\n> {}".format(
             ctx.author.mention, random.choice(config["8ball"]["answers"]), question
@@ -122,7 +123,7 @@ async def eight_ball(ctx, *, question: str):
     aliases=config["ping"]["aliases"],
 )
 async def ping(ctx):
-    "Test the internet connection of the bot."
+    """Test the internet connection of the bot."""
     await ctx.channel.send(
         "{} :ping_pong: Pong!\nThe ping took {}ms.".format(
             ctx.author.mention, round(bot.latency * 1000)
@@ -132,20 +133,23 @@ async def ping(ctx):
 
 @tasks.loop(seconds=config["stat-freq"])
 async def status():
-    "Change the status of the bot."
+    """Change the status of the bot."""
     await bot.change_presence(activity=discord.Game(random.choice(config["status"])))
 
 
 @bot.event
 async def on_ready():
-    "Tell the owner that the bot is ready."
+    """Tell the owner that the bot is ready."""
+    for filename in os.listdir("./src"):
+        if filename.endswith(".py"):
+            bot.load_extension("src.{}".format(filename[:-3]))
     print(random.choice(config["ready"]))
     status.start()
 
 
 @bot.event
 async def on_command_error(ctx, error):
-    "Tell the user that an error occured."
+    """Tell the user that an error occured."""
     await ctx.channel.send(
         "{} {}\n```{}```".format(
             ctx.author.mention, random.choice(config["error"]), error
@@ -153,5 +157,4 @@ async def on_command_error(ctx, error):
     )
 
 
-bot.load_extension("util")
 bot.run(token)
