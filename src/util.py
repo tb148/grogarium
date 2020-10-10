@@ -1,15 +1,18 @@
-import toml, sympy, googletrans, typing
+"Utilities that are not designed for fun."
+import typing
+import googletrans
+import sympy
+import toml
 from discord.ext import commands
 
 config = toml.load("config.toml")
 
 
 class Util(commands.Cog, name=config["util"]["name"]):
-
     "Utilities that are not designed for fun."
 
     def __init__(self, bot):
-        "Utilities that are not designed for fun."
+        "Initialize the cog."
         self.bot = bot
 
     @commands.command(
@@ -22,7 +25,10 @@ class Util(commands.Cog, name=config["util"]["name"]):
         aliases=config["calc"]["aliases"],
     )
     async def calc(self, ctx, *, expression: str):
-        sympy.symbols("x y z")
+        "Calculate and/or simplify mathematical expressions. Certain symbols may be used."
+        sympy.symbols("x y z t")
+        sympy.symbols("k m n", integer=True)
+        sympy.symbols("f g h", cls=sympy.Function)
         await ctx.send(
             "{} :1234:\n```{} = {}```".format(
                 ctx.author.mention,
@@ -43,6 +49,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
     async def trans(
         self, ctx, text: str, dest: str, src: typing.Optional[str] = "auto"
     ):
+        "Translate a word or sentence to another language."
         await ctx.send(
             "{} :abc:\n> {}".format(
                 ctx.author.mention,
@@ -60,6 +67,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
         aliases=config["langs"]["aliases"],
     )
     async def langs(self, ctx):
+        "Output a list that contains all the langcodes you can use."
         await ctx.send(
             "{} :abc: {}\n{}".format(
                 ctx.author.mention,
@@ -75,8 +83,10 @@ class Util(commands.Cog, name=config["util"]["name"]):
 
 
 def setup(bot):
+    "Add the cog to the bot."
     bot.add_cog(Util(bot))
 
 
 def teardown(bot):
+    "Remove the cog from the bot."
     bot.remove_cog(config["util"]["name"])

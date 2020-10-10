@@ -44,14 +44,14 @@ logfile = "grogar.log"
 [roll]
 enabled = true
 hidden = false
-help = "Roll (count) dice with (size) faces each."
-brief = "Roll XdY"
-usage = "[count] [size]"
+help = "Roll some dice."
+brief = "Roll dice"
+usage = "[<size>|<count> <size>|<sizes>...]"
 aliases = ["dice"]
 
 [roll.one-faced]
-min = false
-max = false
+avery = false
+any = true
 
 [roll.limits]
 count = 400
@@ -101,9 +101,8 @@ enabled = true
 hidden = false
 help = "Test the internet connection of the bot."
 brief = "Ping"
-usage = "[website]"
+usage = ""
 aliases = ["pong", "test", "network"]
-url = "https://discord.com"
 
 [util]
 name = "Utilities"
@@ -111,7 +110,7 @@ name = "Utilities"
 [calc]
 enabled = true
 hidden = false
-help = "Calculate and/or simplify mathematical expressions. Letters x, y and z may be used."
+help = "Calculate and/or simplify mathematical expressions. Certain symbols may be used."
 brief = "Calculate"
 usage = "<expression>"
 aliases = ["calculate", "math"]

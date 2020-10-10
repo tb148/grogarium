@@ -1,4 +1,10 @@
-import discord, toml, argparse, logging, random, aiohttp, time, typing
+"The main file for the bot."
+import argparse
+import logging
+import random
+
+import discord
+import toml
 from discord.ext import commands, tasks
 
 config = toml.load("config.toml")
@@ -25,16 +31,9 @@ parser.add_argument(
     action="count",
     help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
 )
-parser.add_argument(
-    "-l",
-    "--log",
-    metavar="LOGFILE",
-    default=config["logfile"],
-    help="The path to store the logs.",
-)
 arg = parser.parse_args()
-token, prefix, verbosity, logfile = arg.token, arg.prefix, arg.verbose, arg.log
-logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
+token, prefix, verbosity = arg.token, arg.prefix, arg.verbose
+logging.basicConfig(level=40 - 10 * verbosity)
 bot = commands.Bot(
     command_prefix=prefix,
     case_insensitive=config["case-insensitive"],
@@ -52,35 +51,39 @@ bot = commands.Bot(
     usage=config["roll"]["usage"],
     aliases=config["roll"]["aliases"],
 )
-async def roll(ctx, sizes: commands.Greedy[int] = [6]):
+async def roll(ctx, sizes: commands.Greedy[int]):
+    "Roll some dice."
+    if len(sizes) == 0:
+        sizes = [6]
     if len(sizes) == 2:
         if sizes[0] < 1 or sizes[1] > config["roll"]["limits"]["count"]:
             await ctx.send(
                 "{} :game_die: {}".format(
-                    random.choice(config["roll"]["warnings"]["limits"])
+                    ctx.author.mention,
+                    random.choice(config["roll"]["warnings"]["limits"]),
                 )
             )
         sizes = [sizes[1] for _ in range(1, sizes[0])]
     if (
-        len(sizes) == 0
-        or len(sizes) > config["roll"]["limits"]["count"]
+        len(sizes) > config["roll"]["limits"]["count"]
         or min(sizes) < 1
         or max(sizes) > config["roll"]["limits"]["size"]
     ):
         await ctx.send(
             "{} :game_die: {}".format(
-                random.choice(config["roll"]["warnings"]["limits"])
+                ctx.author.mention, random.choice(config["roll"]["warnings"]["limits"])
             )
         )
     if (
         max(sizes) == 1
-        and not config["roll"]["one-faced"]["max"]
+        and not config["roll"]["one-faced"]["every"]
         or min(sizes) == 1
-        and not config["roll"]["one-faced"]["min"]
+        and not config["roll"]["one-faced"]["any"]
     ):
         await ctx.send(
             "{} :game_die: {}".format(
-                random.choice(config["roll"]["warnings"]["one-faced"])
+                ctx.author.mention,
+                random.choice(config["roll"]["warnings"]["one-faced"]),
             )
         )
     dice = [random.randint(1, _) for _ in sizes]
@@ -101,6 +104,7 @@ async def roll(ctx, sizes: commands.Greedy[int] = [6]):
     aliases=config["8ball"]["aliases"],
 )
 async def eight_ball(ctx, *, question: str):
+    "Ask a question, get an answer."
     await ctx.send(
         "{} :8ball: {}\n> {}".format(
             ctx.author.mention, random.choice(config["8ball"]["answers"]), question
@@ -117,32 +121,31 @@ async def eight_ball(ctx, *, question: str):
     usage=config["ping"]["usage"],
     aliases=config["ping"]["aliases"],
 )
-async def ping(ctx, *, url: typing.Optional[str] = config["ping"]["url"]):
-    aio = aiohttp.ClientSession()
-    pre = time.time()
-    async with aio.get(url):
-        res = time.time() - pre
+async def ping(ctx):
+    "Test the internet connection of the bot."
     await ctx.channel.send(
         "{} :ping_pong: Pong!\nThe ping took {}ms.".format(
-            ctx.author.mention, round(res * 1000)
+            ctx.author.mention, round(bot.latency * 1000)
         )
     )
-    aio.close()
 
 
 @tasks.loop(seconds=config["stat-freq"])
 async def status():
+    "Change the status of the bot."
     await bot.change_presence(activity=discord.Game(random.choice(config["status"])))
 
 
 @bot.event
 async def on_ready():
+    "Tell the owner that the bot is ready."
     print(random.choice(config["ready"]))
     status.start()
 
 
 @bot.event
 async def on_command_error(ctx, error):
+    "Tell the user that an error occured."
     await ctx.channel.send(
         "{} {}\n```{}```".format(
             ctx.author.mention, random.choice(config["error"]), error
