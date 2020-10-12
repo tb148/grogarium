@@ -27,7 +27,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
     )
     async def calc(self, ctx, *, expression: str):
         """Calculate and/or simplify mathematical expressions. Certain symbols may be used."""
-        expression="".join(expression.strip("`").split("\\"))
+        expression = "".join(expression.strip("`").split("\\"))
         sympy.symbols("x y z t")
         sympy.symbols("k m n", integer=True)
         sympy.symbols("f g h", cls=sympy.Function)
