@@ -188,7 +188,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "dpytest"
-version = "0.0.21"
+version = "0.0.22"
 description = "A package that assists in writing tests for discord.py"
 category = "dev"
 optional = false
@@ -793,7 +793,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "cdcc75797ed17bbed3f0f241bd4d968f4e4b715058b015038473c98b6338f77c"
+content-hash = "465cb0c995fb0346e5778be5db9a4333f652dce4e09a20aa5463fcd6ba56a757"
 
 [metadata.files]
 aiohttp = [
@@ -940,8 +940,8 @@ docutils = [
     {file = "docutils-0.16.tar.gz", hash = "sha256:c2de3a60e9e7d07be26b7f2b00ca0309c207e06c100f9cc2a94931fc75a478fc"},
 ]
 dpytest = [
-    {file = "dpytest-0.0.21-py3-none-any.whl", hash = "sha256:3e8b073338b272aa02375899d4bae47755c2340c2b31b0646af9eef01843cb78"},
-    {file = "dpytest-0.0.21.tar.gz", hash = "sha256:3cc48a8ccb54e4fcb37a2f7ba8ca5acf355b7bae047a26b74af1d46310039755"},
+    {file = "dpytest-0.0.22-py3-none-any.whl", hash = "sha256:f96746e2084b431830141a7ecab083fc0544a9c9aabc9b8de4d6acc270702240"},
+    {file = "dpytest-0.0.22.tar.gz", hash = "sha256:3791a582d941dab2ff575abb84e7ca4b7d0a1fdef7eb1fed9692dc39749310a6"},
 ]
 flask = [
     {file = "Flask-1.1.2-py2.py3-none-any.whl", hash = "sha256:8a4fdd8936eba2512e9c85df320a37e694c93945b33ef33c89946a340a238557"},
