@@ -37,7 +37,7 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
                 googletrans.Translator().translate(result, dest, "auto").text,
             )
         )
-    
+
     @commands.command(
         name="slap",
         enabled=config["slap"]["enabled"],
@@ -47,7 +47,9 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
         usage=config["slap"]["usage"],
         aliases=config["slap"]["aliases"],
     )
-    async def slap(self, ctx, users: commands.Greedy[typing.Union[discord.Member,discord.User]]):
+    async def slap(
+        self, ctx, users: commands.Greedy[typing.Union[discord.Member, discord.User]]
+    ):
         """Slaps somebody."""
         await ctx.send(
             "{} :hand_splayed: You slapped {}.".format(
@@ -55,9 +57,6 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
                 ", ".join([str(_) for _ in users]),
             )
         )
-        
-    
-
 
 
 def setup(bot):
