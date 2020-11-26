@@ -8,7 +8,9 @@ grogarium
 
 |GitHub issues| |GitHub pull requests|
 
-|Codacy Badge| |GitHub| |Discord| |Run on Repl.it|
+|Codacy Badge| |GitHub|
+
+|Discord| |Run on Repl.it|
 
 A Discord bot that works.
 
