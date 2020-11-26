@@ -120,7 +120,7 @@ enabled = true
 hidden = false
 help = "Translate a word or sentence to another language."
 brief = "Google translate"
-usage = "<text> <dest> [src]"
+usage = "<dest> <text>"
 aliases = ["translate", "gt"]
 
 [langs]
@@ -140,5 +140,5 @@ enabled = true
 hidden = false
 help = "Badly translate a word or sentence to another language."
 brief = "Bad Google translate"
-usage = "<text> <dest> [src]"
+usage = "<count> <dest> <text>"
 aliases = ["badtranslate", "bgt", "bt"]
