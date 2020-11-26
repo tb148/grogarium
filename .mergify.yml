@@ -1,7 +1,9 @@
 pull_request_rules:
-  - name: Automatic merge on approval
+  - name: Automatic merge on approval and check success
     conditions:
       - "#approved-reviews-by>=1"
+      - check-success=Semantic Pull Request
+      - check-success=Codacy Static Code Analysis
     actions:
       merge:
         method: merge
