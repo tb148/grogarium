@@ -52,7 +52,7 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
         await ctx.send(
             "{} :hand_splayed: You slapped {}.".format(
                 ctx.author.mention,
-                ", ".join(users)
+                ", ".join([str(_) for _ in users]),
             )
         )
         
