@@ -142,3 +142,11 @@ help = "Badly translate a word or sentence to another language."
 brief = "Bad Google translate"
 usage = "<count> <dest> <text>"
 aliases = ["badtranslate", "bgt", "bt"]
+
+[slap]
+enabled = true
+hidden = false
+help = "Slaps somebody."
+brief = "Slaps"
+usage = "<users> ..."
+aliases = ["hand", "ultraslap"]
