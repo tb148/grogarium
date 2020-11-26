@@ -1,6 +1,4 @@
 """Utilities that are not designed for fun."""
-import typing
-
 import googletrans
 import sympy
 import toml

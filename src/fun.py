@@ -1,6 +1,4 @@
 """Fun commands that are not games."""
-import typing
-
 import googletrans
 import random
 import toml
