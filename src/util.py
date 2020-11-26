@@ -49,13 +49,13 @@ class Util(commands.Cog, name=config["util"]["name"]):
         aliases=config["trans"]["aliases"],
     )
     async def trans(
-        self, ctx, text: str, dest: str, src: typing.Optional[str] = "auto"
+        self, ctx, count: int, dest: str,* , text
     ):
         """Translate a word or sentence to another language."""
         await ctx.send(
             "{} :abc:\n> {}".format(
                 ctx.author.mention,
-                googletrans.Translator().translate(text, dest, src).text,
+                googletrans.Translator().translate(text, dest, "auto").text,
             )
         )
 

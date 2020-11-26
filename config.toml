@@ -131,3 +131,14 @@ brief = "Get the langcodes"
 usage = ""
 aliases = ["lang", "langcodes", "langcode"]
 message = "Here's all the langcodes you can use:"
+
+[fun]
+name = "Fun"
+
+[badgt]
+enabled = true
+hidden = false
+help = "Badly translate a word or sentence to another language."
+brief = "Bad Google translate"
+usage = "<text> <dest> [src]"
+aliases = ["badtranslate", "bgt", "bt"]
