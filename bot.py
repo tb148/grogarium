@@ -1,5 +1,6 @@
 """The main file for the bot."""
 import argparse
+import keep_alive
 import logging
 import os
 import random
@@ -157,5 +158,5 @@ async def on_command_error(ctx, error):
         )
     )
 
-
+keep_alive.keep_alive()
 bot.run(token)
