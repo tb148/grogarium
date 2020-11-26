@@ -1,4 +1,4 @@
-prefix = [">", ">>", ">>>"]
+prefix = ["<<<", "<<", "<"]
 case-insensitive = true
 description = """Grogarium - A discord bot that works.
 This bot is created by TonyBrown148.
@@ -20,12 +20,12 @@ ready = [
     "It's a bird! It's a plane! Wait, no, it's just Grogar.",
 ]
 status = [
-    "Try >help",
-    "Send >>help",
-    "Type >>>help",
-    "PREFIX = SHIFT + .",
-    "Add >> before commands",
-    "My prefix is >>>",
+    "Try <help",
+    "Send <<help",
+    "Type <<<help",
+    "PREFIX = SHIFT + COMMA",
+    "Add << before commands",
+    "My prefix is <<<",
     "with the Discord API",
     "with Python",
     "with discord.py",
