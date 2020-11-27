@@ -36,6 +36,7 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
                 random.choice(config["badgt"]["warnings"])
             )
           )
+          return
         prev, result = src, text
         for lang in random.choices([_ for _ in googletrans.LANGUAGES], k=count):
             result = translator.translate(result, lang, prev).text
