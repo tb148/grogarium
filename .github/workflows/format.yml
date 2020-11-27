@@ -1,5 +1,5 @@
 name: Format code using Prettier and Black
-on: [push, pull_request]
+on: push
 
 jobs:
   prettier:
