@@ -71,7 +71,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
             "{} :abc: {}\n{}".format(
                 ctx.author.mention,
                 config["langs"]["message"],
-                "\n".join(
+                ", ".join(
                     [
                         "{} - {}".format(_, googletrans.LANGUAGES[_])
                         for _ in googletrans.LANGUAGES
