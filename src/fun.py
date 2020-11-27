@@ -8,6 +8,7 @@ import discord
 from discord.ext import commands
 
 config = toml.load("config.toml")
+translator = googletrans.Translator()
 
 
 class Fun(commands.Cog, name=config["fun"]["name"]):
@@ -30,12 +31,12 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
         """Badly translate a word or sentence to another language."""
         prev, result = src, text
         for lang in random.choices([_ for _ in googletrans.LANGUAGES], k=count):
-            result = googletrans.Translator().translate(result, lang, prev).text
+            result = translator.translate(result, lang, prev).text
             prev = lang
         await ctx.send(
             "{} :abc:\n> {}".format(
                 ctx.author.mention,
-                googletrans.Translator().translate(result, dest, prev).text,
+                translator.translate(result, dest, prev).text,
             )
         )
 

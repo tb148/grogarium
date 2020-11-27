@@ -5,7 +5,7 @@ import toml
 from discord.ext import commands
 
 config = toml.load("config.toml")
-
+translator = googletrans.Translator()
 
 class Util(commands.Cog, name=config["util"]["name"]):
     """Utilities that are not designed for fun."""
@@ -51,7 +51,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
         await ctx.send(
             "{} :abc:\n> {}".format(
                 ctx.author.mention,
-                googletrans.Translator().translate(text, dest, src).text,
+                translator.translate(text, dest, src).text,
             )
         )
 
