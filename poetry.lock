@@ -138,6 +138,14 @@ version = "3.0.4"
 
 [[package]]
 category = "main"
+description = "A pure Python chess library with move generation and validation, Polyglot opening book probing, PGN reading and writing, Gaviota tablebase probing, Syzygy tablebase probing and XBoard/UCI engine communication."
+name = "chess"
+optional = false
+python-versions = ">=3.7"
+version = "1.3.0"
+
+[[package]]
+category = "main"
 description = "Composable command line interface toolkit"
 name = "click"
 optional = false
@@ -797,7 +805,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "465cb0c995fb0346e5778be5db9a4333f652dce4e09a20aa5463fcd6ba56a757"
+content-hash = "a2965fb72856a30a8eddd6b82ee29698f9c299d48d9c8413842694cd69075ded"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -890,6 +898,10 @@ cffi = [
 chardet = [
     {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
     {file = "chardet-3.0.4.tar.gz", hash = "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"},
+]
+chess = [
+    {file = "chess-1.3.0-py3-none-any.whl", hash = "sha256:23185e5a16f2b26ef7817d1776c7093d0e331774e9dace7e7ce468f9591ac1c7"},
+    {file = "chess-1.3.0.tar.gz", hash = "sha256:fd33a6c904e64aea327225ffa779b66f8c50887f769105168b1d22df4934ad2b"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
