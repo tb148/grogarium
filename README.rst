@@ -2,15 +2,7 @@
 grogarium
 #########
 
-|code style: prettier| |Code style: black|
-
-|GitHub watchers| |GitHub Repo stars| |GitHub forks|
-
-|GitHub issues| |GitHub pull requests|
-
-|Codacy Badge| |GitHub|
-
-|Discord| |Run on Repl.it|
+|code style: prettier| |Code style: black| |GitHub watchers| |GitHub Repo stars| |GitHub forks| |GitHub issues| |GitHub pull requests| |Codacy Badge| |GitHub| |Discord| |Run on Repl.it|
 
 A Discord bot that works.
 
