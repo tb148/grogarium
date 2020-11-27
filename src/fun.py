@@ -31,7 +31,7 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
         prev, result = src, text
         for lang in random.choices([_ for _ in googletrans.LANGUAGES], k=count):
             result = googletrans.Translator().translate(result, lang, prev).text
-            prev=lang
+            prev = lang
         await ctx.send(
             "{} :abc:\n> {}".format(
                 ctx.author.mention,
