@@ -29,6 +29,13 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
     )
     async def badgt(self, ctx, src: str, count: int, dest: str, *, text: str):
         """Badly translate a word or sentence to another language."""
+        if count>config["badgt"]["limit"]:
+          await ctx.send(
+            "{} :abc: {}\n".format(
+                ctx.author.mention,
+                random.choice(config["badgt"]["warnings"])
+            )
+          )
         prev, result = src, text
         for lang in random.choices([_ for _ in googletrans.LANGUAGES], k=count):
             result = translator.translate(result, lang, prev).text

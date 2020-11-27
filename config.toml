@@ -142,6 +142,11 @@ help = "Badly translate a word or sentence to another language."
 brief = "Bad Google translate"
 usage = "<src> <count> <dest> <text>"
 aliases = ["badtranslate", "bgt", "bt"]
+limit = 50
+warnings = [
+    "Are you testing my functionalities or what?",
+    "Don't test me anymore! I am stable!",
+]
 
 [slap]
 enabled = true
