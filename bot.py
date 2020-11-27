@@ -66,6 +66,7 @@ async def roll(ctx, sizes: commands.Greedy[int]):
                     random.choice(config["roll"]["warnings"]["limits"]),
                 )
             )
+            return
         sizes = [sizes[1] for _ in range(1, sizes[0])]
     if (
         len(sizes) > config["roll"]["limits"]["count"]
@@ -77,6 +78,7 @@ async def roll(ctx, sizes: commands.Greedy[int]):
                 ctx.author.mention, random.choice(config["roll"]["warnings"]["limits"])
             )
         )
+        return
     if (
         max(sizes) == 1
         and not config["roll"]["one-faced"]["every"]
@@ -89,6 +91,7 @@ async def roll(ctx, sizes: commands.Greedy[int]):
                 random.choice(config["roll"]["warnings"]["one-faced"]),
             )
         )
+        return
     dice = [random.randint(1, _) for _ in sizes]
     await ctx.send(
         "{} :game_die: You rolled a {}!\n```{}```".format(
