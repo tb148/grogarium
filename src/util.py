@@ -7,6 +7,7 @@ from discord.ext import commands
 config = toml.load("config.toml")
 translator = googletrans.Translator()
 
+
 class Util(commands.Cog, name=config["util"]["name"]):
     """Utilities that are not designed for fun."""
 
