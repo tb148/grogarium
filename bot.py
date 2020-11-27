@@ -67,7 +67,7 @@ async def roll(ctx, sizes: commands.Greedy[int]):
                 )
             )
             return
-        sizes = [sizes[1] for _ in range(1, sizes[0])]
+        sizes = [sizes[1] for _ in range(0, sizes[0])]
     if (
         len(sizes) > config["roll"]["limits"]["count"]
         or min(sizes) < 1
