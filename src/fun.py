@@ -79,9 +79,10 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
     async def game(self, ctx):
         """Plays the game."""
         await ctx.send(
-            "{} :negative_squared_cross_mark: I lost the game.".format(
+            "{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
                 ctx.author.mention,
             )
+            ,embed=discord.Embed(url="https://xkcd.com/391/")
         )
 
 
