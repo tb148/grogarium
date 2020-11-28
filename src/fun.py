@@ -78,16 +78,20 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
     )
     async def game(self, ctx):
         """Plays the game."""
-        embed = discord.Embed(title="xkcd: Anti-Mindvirus",description="I'm as surprised as you!  I didn't think it was possible.",url="https://xkcd.com/391/")
+        embed = discord.Embed(
+            title="xkcd: Anti-Mindvirus",
+            description="I'm as surprised as you!  I didn't think it was possible.",
+            url="https://xkcd.com/391/",
+        )
         embed.set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
         if random.random() > config["game"]["win-chance"]:
-          await ctx.send(
-              "{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
-                  ctx.author.mention,
-              ),
-          )
+            await ctx.send(
+                "{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
+                    ctx.author.mention,
+                ),
+            )
         else:
-          await ctx.send(embed=embed)
+            await ctx.send(embed=embed)
 
 
 def setup(bot):
