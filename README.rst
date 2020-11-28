@@ -7,7 +7,7 @@ grogarium
 A Discord bot that works.
 
 **This bot is currently under development, backwards compatibility is
-NOT granted yet!**
+not granted yet!**
 
 .. |code style: prettier| image:: https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square
    :target: https://github.com/prettier/prettier
