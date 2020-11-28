@@ -68,9 +68,8 @@ class Util(commands.Cog, name=config["util"]["name"]):
     async def langs(self, ctx):
         """Output a list that contains all the langcodes you can use."""
         await ctx.send(
-            "{} :abc: {}\n{}".format(
+            "{} :abc: Here's all the langcodes you can use:\n{}".format(
                 ctx.author.mention,
-                config["langs"]["message"],
                 ", ".join(
                     [
                         "{} - {}".format(_, googletrans.LANGUAGES[_])

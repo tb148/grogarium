@@ -130,7 +130,6 @@ help = "Output a list that contains all the langcodes you can use."
 brief = "Get the langcodes"
 usage = ""
 aliases = ["lang", "langcodes", "langcode"]
-message = "Here's all the langcodes you can use:"
 
 [fun]
 name = "Fun"
@@ -155,3 +154,12 @@ help = "Slaps somebody."
 brief = "Slaps"
 usage = "<users> ..."
 aliases = ["hand", "ultraslap"]
+
+
+[game]
+enabled = true
+hidden = false
+help = "Plays the game. See https://en.wikipedia.org/wiki/The_Game_(mind_game)"
+brief = "The game"
+usage = ""
+aliases = ["thegame"]
