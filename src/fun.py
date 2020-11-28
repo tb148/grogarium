@@ -66,7 +66,7 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
                 ", ".join([str(_) for _ in users]),
             )
         )
-    
+
     @commands.command(
         name="game",
         enabled=config["game"]["enabled"],
@@ -76,16 +76,13 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
         usage=config["game"]["usage"],
         aliases=config["game"]["aliases"],
     )
-    async def game(
-        self, ctx
-    ):
+    async def game(self, ctx):
         """Plays the game."""
         await ctx.send(
             "{} :negative_squared_cross_mark: I lost the game.".format(
                 ctx.author.mention,
             )
         )
-    
 
 
 def setup(bot):
