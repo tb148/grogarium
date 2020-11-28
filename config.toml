@@ -162,3 +162,4 @@ help = "Plays the game. See https://en.wikipedia.org/wiki/The_Game_(mind_game)"
 brief = "The game"
 usage = ""
 aliases = ["thegame"]
+win-chance = 0.01
