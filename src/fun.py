@@ -82,7 +82,6 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
             "{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
                 ctx.author.mention,
             ),
-            embed=discord.Embed(url="https://xkcd.com/391/"),
         )
 
 
