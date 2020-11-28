@@ -155,7 +155,6 @@ brief = "Slaps"
 usage = "<users> ..."
 aliases = ["hand", "ultraslap"]
 
-
 [game]
 enabled = true
 hidden = false
