@@ -86,7 +86,7 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
         embed.set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
         if random.random() > config["game"]["win-chance"]:
             await ctx.send(
-                "{} :negative_squared_cross_mark: I lost the game. https://en.wikipedia.org/wiki/The_Game_(mind_game)".format(
+                "{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
                     ctx.author.mention,
                 ),
             )
