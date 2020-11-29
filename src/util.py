@@ -71,7 +71,7 @@ class Util(commands.Cog, name=config["util"]["name"]):
             "{} :abc: Here's all the langcodes you can use:".format(
                 ctx.author.mention,
             ),
-            embed=discord.Embed().from_dict(googletrans.LANGUAGES)
+            embed=discord.Embed().from_dict(googletrans.LANGUAGES),
         )
 
 
