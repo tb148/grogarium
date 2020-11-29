@@ -68,9 +68,9 @@ class Util(commands.Cog, name=config["util"]["name"]):
     )
     async def langs(self, ctx):
         """Output a list that contains all the langcodes you can use."""
-        embed=discord.Embed()
-        for name,value in googletrans.LANGUAGES.items():
-          embed.add_field(name=name,value=value,inline=True)
+        embed = discord.Embed()
+        for name, value in googletrans.LANGUAGES.items():
+            embed.add_field(name=name, value=value, inline=True)
         await ctx.send(
             "{} :abc: Here's all the langcodes you can use:".format(
                 ctx.author.mention,
