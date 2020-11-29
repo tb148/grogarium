@@ -2,7 +2,6 @@
 import googletrans
 import sympy
 import toml
-import discord
 from discord.ext import commands
 
 config = toml.load("config.toml")
@@ -68,15 +67,16 @@ class Util(commands.Cog, name=config["util"]["name"]):
     )
     async def langs(self, ctx):
         """Output a list that contains all the langcodes you can use."""
-        embed, count = discord.Embed(), 0
-        for name, value in googletrans.LANGUAGES.items():
-            embed.add_field(name=name, value=value, inline=count % 5 != 0)
-            count += 1
         await ctx.send(
-            "{} :abc: Here's all the langcodes you can use:".format(
+            "{} :abc: Here's all the langcodes you can use:\n{}".format(
                 ctx.author.mention,
-            ),
-            embed=embed,
+                ", ".join(
+                    [
+                        "{} - {}".format(_, googletrans.LANGUAGES[_])
+                        for _ in googletrans.LANGUAGES
+                    ]
+                ),
+            )
         )
 
 
