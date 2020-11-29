@@ -2,6 +2,7 @@
 import googletrans
 import sympy
 import toml
+import discord
 from discord.ext import commands
 
 config = toml.load("config.toml")
