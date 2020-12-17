@@ -1,4 +1,4 @@
-prefix = ["%%%", "%%", "%"]
+prefix = ["%"]
 case-insensitive = true
 description = """Grogarium - A discord bot that works.
 This bot is created by TonyBrown148.
@@ -21,11 +21,11 @@ ready = [
 ]
 status = [
     "Try %help",
-    "Send %%help",
-    "Type %%%help",
+    "Send %help",
+    "Type %help",
     "PREFIX = SHIFT + 5",
-    "Add %% before commands",
-    "My prefix is %%%",
+    "Add % before commands",
+    "My prefix is %",
     "with the Discord API",
     "with Python",
     "with discord.py",
