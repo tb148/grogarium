@@ -92,7 +92,7 @@ class Fun(commands.Cog, name="Fun"):
                     url="https://xkcd.com/391/",
                 ).set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
             )
-    
+
     @commands.command(
         name="necro",
         enabled=config["necro"]["enabled"],
@@ -103,8 +103,8 @@ class Fun(commands.Cog, name="Fun"):
         aliases=config["necro"]["aliases"],
     )
     async def necro(self, ctx):
-      prev=None
-      await ctx.send("TBD")
+        prev = None
+        await ctx.send("TBD")
 
 
 def setup(bot):

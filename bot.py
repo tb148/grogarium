@@ -132,7 +132,14 @@ async def ping(ctx):
     await ctx.channel.send(
         "{} :ping_pong: Pong!\n{}".format(
             ctx.author.mention,
-            " ".join(["Pinging shard {} took {}ms.".format(shard_id,round(latency*1000)) for (shard_id, latency) in bot.latencies])
+            " ".join(
+                [
+                    "Pinging shard {} took {}ms.".format(
+                        shard_id, round(latency * 1000)
+                    )
+                    for (shard_id, latency) in bot.latencies
+                ]
+            ),
         )
     )
 
