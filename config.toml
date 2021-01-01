@@ -163,3 +163,12 @@ brief = "The game"
 usage = ""
 aliases = ["thegame"]
 win-chance = 0.01
+
+[necro]
+enabled = true
+hidden = false
+help = "Plays thread necromancy."
+brief = "Necropost"
+usage = ""
+aliases = ["necromancy","necropost"]
+posts = 100

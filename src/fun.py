@@ -11,7 +11,7 @@ config = toml.load("config.toml")
 translator = googletrans.Translator()
 
 
-class Fun(commands.Cog, name=config["fun"]["name"]):
+class Fun(commands.Cog, name="Fun"):
     """Fun commands that are not games."""
 
     def __init__(self, bot):
@@ -92,6 +92,19 @@ class Fun(commands.Cog, name=config["fun"]["name"]):
                     url="https://xkcd.com/391/",
                 ).set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
             )
+    
+    @commands.command(
+        name="necro",
+        enabled=config["necro"]["enabled"],
+        hidden=config["necro"]["hidden"],
+        help=config["necro"]["help"],
+        brief=config["necro"]["brief"],
+        usage=config["necro"]["usage"],
+        aliases=config["necro"]["aliases"],
+    )
+    async def necro(self, ctx):
+      prev=None
+      await ctx.send("TBD")
 
 
 def setup(bot):
@@ -101,4 +114,4 @@ def setup(bot):
 
 def teardown(bot):
     """Remove the cog from the bot."""
-    bot.remove_cog(config["fun"]["name"])
+    bot.remove_cog("Fun")

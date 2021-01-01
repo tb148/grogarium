@@ -37,7 +37,7 @@ parser.add_argument(
 arg = parser.parse_args()
 token, prefix, verbosity = arg.token, arg.prefix, arg.verbose
 logging.basicConfig(level=40 - 10 * verbosity)
-bot = commands.Bot(
+bot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or(prefix),
     case_insensitive=config["case-insensitive"],
     description=config["description"],
@@ -130,8 +130,9 @@ async def eight_ball(ctx, *, question: str):
 async def ping(ctx):
     """Test the internet connection of the bot."""
     await ctx.channel.send(
-        "{} :ping_pong: Pong!\nThe ping took {}ms.".format(
-            ctx.author.mention, round(bot.latency * 1000)
+        "{} :ping_pong: Pong!\n{}".format(
+            ctx.author.mention,
+            " ".join(["Pinging shard {} took {}ms.".format(shard_id,round(latency*1000)) for (shard_id, latency) in bot.latencies])
         )
     )
 
