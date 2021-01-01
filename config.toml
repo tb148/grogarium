@@ -1,4 +1,4 @@
-prefix = ["%"]
+prefix = "%"
 case-insensitive = true
 description = """Grogarium - A discord bot that works.
 This bot is created by TonyBrown148.
