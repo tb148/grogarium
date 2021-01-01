@@ -170,5 +170,5 @@ hidden = false
 help = "Plays thread necromancy."
 brief = "Necropost"
 usage = ""
-aliases = ["necromancy","necropost"]
+aliases = ["necromancy", "necropost"]
 posts = 100
