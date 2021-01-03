@@ -25,7 +25,6 @@ parser.add_argument(
     "-p",
     "--prefix",
     metavar="PREFIX",
-    action="append",
     default=config["prefix"],
     help="Bot prefix. Used to invoke the bot commands. Defaults to !$*",
 )

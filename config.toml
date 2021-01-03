@@ -50,7 +50,7 @@ usage = "[<size>|<count> <size>|<sizes>...]"
 aliases = ["dice"]
 
 [roll.one-faced]
-avery = false
+every = false
 any = true
 
 [roll.limits]
@@ -104,9 +104,6 @@ brief = "Ping"
 usage = ""
 aliases = ["pong", "test", "network"]
 
-[util]
-name = "Utilities"
-
 [calc]
 enabled = true
 hidden = false
@@ -130,9 +127,6 @@ help = "Output a list that contains all the langcodes you can use."
 brief = "Get the langcodes"
 usage = ""
 aliases = ["lang", "langcodes", "langcode"]
-
-[fun]
-name = "Fun"
 
 [badgt]
 enabled = true
@@ -172,3 +166,4 @@ brief = "Necropost"
 usage = ""
 aliases = ["necromancy", "necropost"]
 posts = 100
+top = false
