@@ -31,11 +31,13 @@ class Util(commands.Cog, name="Utilities"):
         sympy.symbols("x y z t")
         sympy.symbols("k m n", integer=True)
         sympy.symbols("f g h", cls=sympy.Function)
-        await ctx.send("{} :1234:\n```{} = {}```".format(
-            ctx.author.mention,
-            expression,
-            sympy.simplify(sympy.sympify(expression)),
-        ))
+        await ctx.send(
+            "{} :1234:\n```{} = {}```".format(
+                ctx.author.mention,
+                expression,
+                sympy.simplify(sympy.sympify(expression)),
+            )
+        )
 
     @commands.command(
         name="trans",
@@ -48,10 +50,12 @@ class Util(commands.Cog, name="Utilities"):
     )
     async def trans(self, ctx, src: str, dest: str, *, text: str):
         """Translate a word or sentence to another language."""
-        await ctx.send("{} :abc:\n> {}".format(
-            ctx.author.mention,
-            translator.translate(text, lang_tgt=dest, lang_src=src),
-        ))
+        await ctx.send(
+            "{} :abc:\n> {}".format(
+                ctx.author.mention,
+                translator.translate(text, lang_tgt=dest, lang_src=src),
+            )
+        )
 
     @commands.command(
         name="langs",
@@ -67,11 +71,14 @@ class Util(commands.Cog, name="Utilities"):
         await ctx.send(
             "{} :abc: Here's all the langcodes you can use:\n{}".format(
                 ctx.author.mention,
-                ", ".join([
-                    "{} - {}".format(_, googletrans.LANGUAGES[_])
-                    for _ in googletrans.LANGUAGES
-                ]),
-            ))
+                ", ".join(
+                    [
+                        "{} - {}".format(_, googletrans.LANGUAGES[_])
+                        for _ in googletrans.LANGUAGES
+                    ]
+                ),
+            )
+        )
 
 
 def setup(bot):
