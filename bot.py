@@ -57,7 +57,14 @@ parser.add_argument(
     help="The interval to ping the bot itself.",
 )
 arg = parser.parse_args()
-token, prefix, verbosity,logfile,url,interval = arg.token, arg.prefix, arg.verbose,arg.logfile,arg.url,arg.interval
+token, prefix, verbosity, logfile, url, interval = (
+    arg.token,
+    arg.prefix,
+    arg.verbose,
+    arg.logfile,
+    arg.url,
+    arg.interval,
+)
 logging.basicConfig(level=40 - 10 * verbosity)
 bot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or(prefix),
@@ -171,9 +178,11 @@ async def status():
     """Change the status of the bot."""
     await bot.change_presence(activity=discord.Game(random.choice(config["status"])))
 
+
 @tasks.loop(minutes=interval)
 async def ping_self():
     requests.get(url)
+
 
 @bot.event
 async def on_ready():
@@ -185,7 +194,6 @@ async def on_ready():
     status.start()
     if url:
         ping_self.start()
-
 
 
 @bot.event
