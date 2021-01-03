@@ -138,7 +138,7 @@ class Fun(commands.Cog, name="Fun"):
         else:
             if ctx.author in score:
                 await ctx.send(
-                    "{} :timer: You necroposted for {}.".format(
+                    "{} :stopwatch: You necroposted for {}.".format(
                         ctx.author.mention, str(score[ctx.author])
                     )
                 )
