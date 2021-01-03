@@ -65,7 +65,7 @@ token, prefix, verbosity, logfile, url, interval = (
     arg.url,
     arg.interval,
 )
-logging.basicConfig(level=40 - 10 * verbosity,filename=logfile)
+logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or(prefix),
     case_insensitive=config["case-insensitive"],
