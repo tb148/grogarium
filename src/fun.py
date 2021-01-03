@@ -123,7 +123,7 @@ class Fun(commands.Cog, name="Fun"):
             prev = post
         if top:
             await ctx.send(
-                "{} :stadium: ere's the leaderboard you asked for:\n{}".format(
+                "{} :stadium: Here's the leaderboard you asked for:\n{}".format(
                     ctx.author.mention,
                     "\n".join(
                         [
