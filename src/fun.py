@@ -102,18 +102,24 @@ class Fun(commands.Cog, name="Fun"):
         usage=config["necro"]["usage"],
         aliases=config["necro"]["aliases"],
     )
-    async def necro(self, ctx,nec:discord.TextChannel,posts:typing.Optional[int]=config["necro"]["posts"],top:typing.Optional[bool]=config["necro"]["top"]):
-        prev,score = None,{}
+    async def necro(
+        self,
+        ctx,
+        nec: discord.TextChannel,
+        posts: typing.Optional[int] = config["necro"]["posts"],
+        top: typing.Optional[bool] = config["necro"]["top"],
+    ):
+        prev, score = None, {}
         if posts <= 0:
-            hist=await nec.history(limit=None).flatten()
+            hist = await nec.history(limit=None).flatten()
         else:
-            hist=await nec.history(limit=posts).flatten()
+            hist = await nec.history(limit=posts).flatten()
         for post in hist:
             if prev:
                 if prev.author not in score:
-                  score[prev.author]=datetime.timedelta()
-                score[prev.author]+=prev.created_at-post.created_at
-            prev=post
+                    score[prev.author] = datetime.timedelta()
+                score[prev.author] += prev.created_at - post.created_at
+            prev = post
         if top:
             await ctx.send("TBD")
         else:
@@ -121,8 +127,6 @@ class Fun(commands.Cog, name="Fun"):
                 await ctx.send(str(score[ctx.author]))
             else:
                 await ctx.send("You don't seem to have valid posts!")
-
-        
 
 
 def setup(bot):
