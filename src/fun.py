@@ -142,11 +142,18 @@ class Fun(commands.Cog, name="Fun"):
             if ctx.author in score:
                 await ctx.send(
                     "{} :stopwatch: You necroposted for {} using {} posts, which is {} per post.".format(
-                        ctx.author.mention, str(score[ctx.author]), cnt, str(score[ctx.author]/cnt) 
+                        ctx.author.mention,
+                        str(score[ctx.author]),
+                        cnt,
+                        str(score[ctx.author] / cnt),
                     )
                 )
             else:
-                await ctx.send("{} :negative_squared_cross_mark: You don't seem to have valid posts!".format(ctx.author.mention))
+                await ctx.send(
+                    "{} :negative_squared_cross_mark: You don't seem to have valid posts!".format(
+                        ctx.author.mention
+                    )
+                )
 
 
 def setup(bot):
