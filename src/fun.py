@@ -127,9 +127,9 @@ class Fun(commands.Cog, name="Fun"):
                     ctx.author.mention,
                     "\n".join(
                         [
-                            "{} - {}".format(str(user),str(time))
+                            "{} - {}".format(str(user), str(time))
                             for (user, time) in sorted(
-                                score.items(), key=operator.itemgetter(1),reverse=True
+                                score.items(), key=operator.itemgetter(1), reverse=True
                             )
                         ]
                     ),
