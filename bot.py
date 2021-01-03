@@ -1,9 +1,11 @@
 """The main file for the bot."""
 import argparse
+import asyncio
 import keep_alive
 import logging
 import os
 import random
+import requests
 
 import discord
 import toml
@@ -34,8 +36,28 @@ parser.add_argument(
     action="count",
     help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
 )
+parser.add_argument(
+    "-l",
+    "--logfile",
+    default="grogar.log",
+    help="The file to write logs to.",
+)
+parser.add_argument(
+    "-u",
+    "--url",
+    metavar="URL",
+    help="The URL of the bot itself. Used for keeping alive.",
+)
+parser.add_argument(
+    "-i",
+    "--interval",
+    metavar="INTERVAL",
+    default=5,
+    type=int,
+    help="The interval to ping the bot itself.",
+)
 arg = parser.parse_args()
-token, prefix, verbosity = arg.token, arg.prefix, arg.verbose
+token, prefix, verbosity,logfile,url,interval = arg.token, arg.prefix, arg.verbose,arg.logfile,arg.url,arg.interval
 logging.basicConfig(level=40 - 10 * verbosity)
 bot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or(prefix),
@@ -149,6 +171,9 @@ async def status():
     """Change the status of the bot."""
     await bot.change_presence(activity=discord.Game(random.choice(config["status"])))
 
+@tasks.loop(minutes=interval)
+async def ping_self():
+    requests.get(url)
 
 @bot.event
 async def on_ready():
@@ -158,6 +183,9 @@ async def on_ready():
             bot.load_extension("src.{}".format(filename[:-3]))
     print(random.choice(config["ready"]))
     status.start()
+    if url:
+        ping_self.start()
+
 
 
 @bot.event
