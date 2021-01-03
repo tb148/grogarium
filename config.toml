@@ -164,3 +164,4 @@ usage = "<channel> [posts] [leaderboard]"
 aliases = ["necromancy", "necropost"]
 posts = 100
 top = false
+bot = false

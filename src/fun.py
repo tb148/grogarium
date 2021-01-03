@@ -117,6 +117,8 @@ class Fun(commands.Cog, name="Fun"):
         else:
             hist = await nec.history(limit=posts).flatten()
         for post in hist:
+            if post.author.bot and not config["necro"]["bot"]:
+                continue
             if prev:
                 if prev.author not in score:
                     score[prev.author] = datetime.timedelta()
