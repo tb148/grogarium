@@ -29,8 +29,10 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
         async with aiohttp.ClientSession() as session:
             async with session.get("https://thispersondoesnotexist.com/image") as resp:
                 if resp.status != 200:
-                    return await ctx.send('Could not download file...')
-                await ctx.send(file=discord.File(io.BytesIO(await resp.read()), 'cool_image.jpeg'))
+                    return await ctx.send("Could not download file...")
+                await ctx.send(
+                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
+                )
 
 
 def setup(bot):
