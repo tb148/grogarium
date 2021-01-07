@@ -19,6 +19,13 @@ parser.add_argument(
     help="Your bot token. Keep this secret.",
 )
 parser.add_argument(
+    "-p",
+    "--prefix",
+    metavar="PREFIX",
+    default=config["prefix"],
+    help="Bot prefix. Used to invoke the bot commands. Defaults to %.",
+)
+parser.add_argument(
     "-v",
     "--verbose",
     default=1,
@@ -56,7 +63,7 @@ token, prefix, verbosity, logfile, url, interval = (
 )
 logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.AutoShardedBot(
-    command_prefix=commands.when_mentioned,
+    command_prefix=commands.when_mentioned_or(prefix),
     case_insensitive=config["case-insensitive"],
     description=config["description"],
     owner_ids=config["owners"],
