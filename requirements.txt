@@ -1,8 +1,6 @@
 chess==1.*,>=1.3.0
-discord.py[voice]==1.*,>=1.5.0
-flask==1.*,>=1.1.2
+discord.py==1.*,>=1.5.0
 googletrans==3.*,>=3.0.0
+google-trans-new==1.*,>=1.1.9
 sympy==1.*,>=1.6.2
-tensorflow==2.*,>=2.4.0
-tensorpack==0.*,>=0.10.1
 toml==0.*,>=0.10.2
