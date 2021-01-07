@@ -38,28 +38,12 @@ parser.add_argument(
     default="grogar.log",
     help="The file to write logs to.",
 )
-parser.add_argument(
-    "-u",
-    "--url",
-    metavar="URL",
-    help="The URL of the bot itself. Used for keeping alive.",
-)
-parser.add_argument(
-    "-i",
-    "--interval",
-    metavar="INTERVAL",
-    default=5,
-    type=int,
-    help="The interval to ping the bot itself.",
-)
 arg = parser.parse_args()
-token, prefix, verbosity, logfile, url, interval = (
+token, prefix, verbosity, logfile = (
     arg.token,
     arg.prefix,
     arg.verbose,
-    arg.logfile,
-    arg.url,
-    arg.interval,
+    arg.logfile
 )
 logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.AutoShardedBot(
@@ -175,11 +159,6 @@ async def status():
     await bot.change_presence(activity=discord.Game(random.choice(config["status"])))
 
 
-@tasks.loop(minutes=interval)
-async def ping_self():
-    requests.get(url)
-
-
 @bot.event
 async def on_ready():
     """Tell the owner that the bot is ready."""
@@ -188,8 +167,6 @@ async def on_ready():
             bot.load_extension("src.{}".format(filename[:-3]))
     print(random.choice(config["ready"]))
     status.start()
-    if url:
-        ping_self.start()
 
 
 @bot.event
