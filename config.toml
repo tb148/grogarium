@@ -162,6 +162,14 @@ help = "Plays thread necromancy."
 brief = "Necropost"
 usage = "<channel> [posts] [leaderboard]"
 aliases = ["necromancy", "necropost"]
-posts = 100
+posts = 500
 top = false
 bot = false
+
+[human]
+enabled = true
+hidden = false
+help = "This Human Does Not Exist."
+brief = "For humans"
+usage = ""
+aliases = ["person", "humans"]
