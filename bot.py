@@ -39,12 +39,7 @@ parser.add_argument(
     help="The file to write logs to.",
 )
 arg = parser.parse_args()
-token, prefix, verbosity, logfile = (
-    arg.token,
-    arg.prefix,
-    arg.verbose,
-    arg.logfile
-)
+token, prefix, verbosity, logfile = (arg.token, arg.prefix, arg.verbose, arg.logfile)
 logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or(prefix),
