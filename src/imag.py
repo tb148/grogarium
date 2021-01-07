@@ -30,3 +30,13 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
                 url="https://thispersondoesnotexist.com/",
             ).set_image(url="https://thispersondoesnotexist.com/image")
         )
+
+
+def setup(bot):
+    """Add the cog to the bot."""
+    bot.add_cog(Imag(bot))
+
+
+def teardown(bot):
+    """Remove the cog from the bot."""
+    bot.remove_cog("This Object Does Not Exist")
