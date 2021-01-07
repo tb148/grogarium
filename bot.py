@@ -1,7 +1,5 @@
 """The main file for the bot."""
 import argparse
-import asyncio
-import keep_alive
 import logging
 import os
 import random
@@ -20,13 +18,6 @@ parser.add_argument(
     metavar="TOKEN",
     required=True,
     help="Your bot token. Keep this secret.",
-)
-parser.add_argument(
-    "-p",
-    "--prefix",
-    metavar="PREFIX",
-    default=config["prefix"],
-    help="Bot prefix. Used to invoke the bot commands. Defaults to !$*",
 )
 parser.add_argument(
     "-v",
@@ -66,7 +57,7 @@ token, prefix, verbosity, logfile, url, interval = (
 )
 logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.AutoShardedBot(
-    command_prefix=commands.when_mentioned_or(prefix),
+    command_prefix=commands.when_mentioned,
     case_insensitive=config["case-insensitive"],
     description=config["description"],
     owner_ids=config["owners"],
@@ -204,6 +195,4 @@ async def on_command_error(ctx, error):
         )
     )
 
-
-keep_alive.keep_alive(bot)
 bot.run(token)
