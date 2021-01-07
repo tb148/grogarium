@@ -180,7 +180,7 @@ hidden = false
 help = "This Artwork Does Not Exist."
 brief = "For artworks"
 usage = ""
-aliases = ["art","artwork"]
+aliases = ["art", "artwork"]
 
 [cats]
 enabled = true
