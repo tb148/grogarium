@@ -33,6 +33,71 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
                 await ctx.send(
                     file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
                 )
+    
+
+    @commands.command(
+        name="arts",
+        enabled=config["arts"]["enabled"],
+        hidden=config["arts"]["hidden"],
+        help=config["arts"]["help"],
+        brief=config["arts"]["brief"],
+        usage=config["arts"]["usage"],
+        aliases=config["arts"]["aliases"],
+    )
+    async def arts(self, ctx):
+        """This Artwork Does Not Exist."""
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://thisartworkdoesnotexist.com") as resp:
+                if resp.status != 200:
+                    return await ctx.send("Could not download file...")
+                await ctx.send(
+                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
+                )
+    
+
+    @commands.command(
+        name="cats",
+        enabled=config["cats"]["enabled"],
+        hidden=config["cats"]["hidden"],
+        help=config["cats"]["help"],
+        brief=config["cats"]["brief"],
+        usage=config["cats"]["usage"],
+        aliases=config["cats"]["aliases"],
+    )
+    async def cats(self, ctx):
+        """This Cat Does Not Exist."""
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://thiscatdoesnotexist.com/image") as resp:
+                if resp.status != 200:
+                    return await ctx.send("Could not download file...")
+                await ctx.send(
+                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
+                )
+    
+    @commands.command(
+        name="horse",
+        enabled=config["horse"]["enabled"],
+        hidden=config["horse"]["hidden"],
+        help=config["horse"]["help"],
+        brief=config["horse"]["brief"],
+        usage=config["horse"]["usage"],
+        aliases=config["horse"]["aliases"],
+    )
+    async def horse(self, ctx):
+        """This Horse Does Not Exist."""
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://thishorsedoesnotexist.com/image") as resp:
+                if resp.status != 200:
+                    return await ctx.send("Could not download file...")
+                await ctx.send(
+                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
+                )
+    
+
+    
+    
+
+    
 
 
 def setup(bot):

@@ -173,3 +173,27 @@ help = "This Human Does Not Exist."
 brief = "For humans"
 usage = ""
 aliases = ["person", "humans"]
+
+[arts]
+enabled = true
+hidden = false
+help = "This Artwork Does Not Exist."
+brief = "For artworks"
+usage = ""
+aliases = ["art","artwork"]
+
+[cats]
+enabled = true
+hidden = false
+help = "This Cat Does Not Exist."
+brief = "For cats"
+usage = ""
+aliases = ["cat"]
+
+[horse]
+enabled = true
+hidden = false
+help = "This Horse Does Not Exist."
+brief = "For horses"
+usage = ""
+aliases = ["horses"]
