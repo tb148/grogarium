@@ -31,7 +31,9 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def human(self, ctx):
         """This Person Does Not Exist."""
-        await ctx.send(file=await self.get_imag("https://thispersondoesnotexist.com/image"))
+        await ctx.send(
+            file=await self.get_imag("https://thispersondoesnotexist.com/image")
+        )
 
     @commands.command(
         name="arts",
