@@ -33,7 +33,6 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
                 await ctx.send(
                     file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
                 )
-    
 
     @commands.command(
         name="arts",
@@ -53,7 +52,6 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
                 await ctx.send(
                     file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
                 )
-    
 
     @commands.command(
         name="cats",
@@ -73,7 +71,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
                 await ctx.send(
                     file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
                 )
-    
+
     @commands.command(
         name="horse",
         enabled=config["horse"]["enabled"],
@@ -92,12 +90,6 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
                 await ctx.send(
                     file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
                 )
-    
-
-    
-    
-
-    
 
 
 def setup(bot):
