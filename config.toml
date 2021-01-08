@@ -1,4 +1,3 @@
-prefix = "%"
 case-insensitive = true
 description = "Grogarium - A discord bot that works. This bot is created by TonyBrown148. You can find the source code at here: https://github.com/tb148/grogarium\n"
 ready = [
@@ -17,12 +16,12 @@ ready = [
     "It's a bird! It's a plane! Wait, no, it's just Grogar.",
 ]
 status = [
-    "Try %help",
-    "Send %help",
-    "Type %help",
-    "PREFIX = SHIFT + 5",
-    "Add % before commands",
-    "My prefix is %",
+    "Try @Grogar help",
+    "Send @Grogar help",
+    "Type @Grogar help",
+    "PREFIX = MENTION",
+    "Mention me before commands",
+    "My prefix is my mention",
     "with the Discord API",
     "with Python",
     "with discord.py",
