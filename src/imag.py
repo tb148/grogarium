@@ -67,7 +67,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     async def cats(self, ctx):
         """This Cat Does Not Exist."""
         async with aiohttp.ClientSession() as session:
-            async with session.get("https://thiscatdoesnotexist.com/image") as resp:
+            async with session.get("https://thiscatdoesnotexist.com") as resp:
                 if resp.status != 200:
                     return await ctx.send("Could not download file...")
                 await ctx.send(
@@ -86,7 +86,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     async def horse(self, ctx):
         """This Horse Does Not Exist."""
         async with aiohttp.ClientSession() as session:
-            async with session.get("https://thishorsedoesnotexist.com/image") as resp:
+            async with session.get("https://thishorsedoesnotexist.com") as resp:
                 if resp.status != 200:
                     return await ctx.send("Could not download file...")
                 await ctx.send(
