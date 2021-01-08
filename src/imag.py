@@ -15,6 +15,13 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
         """Initialize the cog."""
         self.bot = bot
 
+    async def get_imag(url):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                    "https://thispersondoesnotexist.com/image") as resp:
+                return discord.File(
+                    io.BytesIO(await resp.read()), "cool_image.jpeg")
+
     @commands.command(
         name="human",
         enabled=config["human"]["enabled"],
@@ -26,13 +33,8 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def human(self, ctx):
         """This Person Does Not Exist."""
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://thispersondoesnotexist.com/image") as resp:
-                if resp.status != 200:
-                    return await ctx.send("Could not download file...")
-                await ctx.send(
-                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
-                )
+        await ctx.send(
+            file=self.get_imag("https://thispersondoesnotexist.com/image"))
 
     @commands.command(
         name="arts",
@@ -45,13 +47,8 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def arts(self, ctx):
         """This Artwork Does Not Exist."""
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://thisartworkdoesnotexist.com") as resp:
-                if resp.status != 200:
-                    return await ctx.send("Could not download file...")
-                await ctx.send(
-                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
-                )
+        await ctx.send(
+            file=self.get_imag("https://thisartworkdoesnotexist.com"))
 
     @commands.command(
         name="cats",
@@ -64,13 +61,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def cats(self, ctx):
         """This Cat Does Not Exist."""
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://thiscatdoesnotexist.com") as resp:
-                if resp.status != 200:
-                    return await ctx.send("Could not download file...")
-                await ctx.send(
-                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
-                )
+        await ctx.send(file=self.get_imag("https://thiscatdoesnotexist.com"))
 
     @commands.command(
         name="horse",
@@ -83,13 +74,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def horse(self, ctx):
         """This Horse Does Not Exist."""
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://thishorsedoesnotexist.com") as resp:
-                if resp.status != 200:
-                    return await ctx.send("Could not download file...")
-                await ctx.send(
-                    file=discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
-                )
+        await ctx.send(file=self.get_imag("https://thishorsedoesnotexist.com"))
 
 
 def setup(bot):
