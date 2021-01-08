@@ -15,9 +15,9 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
         """Initialize the cog."""
         self.bot = bot
 
-    async def get_imag(url):
+    async def get_imag(self, url):
         async with aiohttp.ClientSession() as session:
-            async with session.get("https://thispersondoesnotexist.com/image") as resp:
+            async with session.get(url) as resp:
                 return discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
 
     @commands.command(
