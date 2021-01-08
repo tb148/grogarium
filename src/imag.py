@@ -31,7 +31,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def human(self, ctx):
         """This Person Does Not Exist."""
-        await ctx.send(file=self.get_imag("https://thispersondoesnotexist.com/image"))
+        await ctx.send(file=await self.get_imag("https://thispersondoesnotexist.com/image"))
 
     @commands.command(
         name="arts",
@@ -44,7 +44,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def arts(self, ctx):
         """This Artwork Does Not Exist."""
-        await ctx.send(file=self.get_imag("https://thisartworkdoesnotexist.com"))
+        await ctx.send(file=await self.get_imag("https://thisartworkdoesnotexist.com"))
 
     @commands.command(
         name="cats",
@@ -57,7 +57,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def cats(self, ctx):
         """This Cat Does Not Exist."""
-        await ctx.send(file=self.get_imag("https://thiscatdoesnotexist.com"))
+        await ctx.send(file=await self.get_imag("https://thiscatdoesnotexist.com"))
 
     @commands.command(
         name="horse",
@@ -70,7 +70,7 @@ class Imag(commands.Cog, name="This Object Does Not Exist"):
     )
     async def horse(self, ctx):
         """This Horse Does Not Exist."""
-        await ctx.send(file=self.get_imag("https://thishorsedoesnotexist.com"))
+        await ctx.send(file=await self.get_imag("https://thishorsedoesnotexist.com"))
 
 
 def setup(bot):
