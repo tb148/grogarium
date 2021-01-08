@@ -153,7 +153,7 @@ help = "Plays the game. See https://en.wikipedia.org/wiki/The_Game_(mind_game)"
 brief = "The game"
 usage = ""
 aliases = ["thegame"]
-win-chance = 0.01
+win-chance = 0.05
 
 [necro]
 enabled = true
@@ -172,7 +172,7 @@ hidden = false
 help = "This Human Does Not Exist."
 brief = "For humans"
 usage = ""
-aliases = ["person", "humans"]
+aliases = ["person", "humans", "mfw"]
 
 [arts]
 enabled = true
