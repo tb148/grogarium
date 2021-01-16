@@ -1,7 +1,0 @@
-.editorconfig
-.mergify.yml
-.replit
-LICENSE
-poetry.lock
-pyproject.toml
-*.rst
