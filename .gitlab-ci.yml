@@ -3,7 +3,7 @@ image: python:latest
 build:
   stage: build
   script:
-    - curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+    - pip install poetry
     - poetry install
     - dephell deps convert
 
