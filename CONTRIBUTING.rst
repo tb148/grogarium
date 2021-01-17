@@ -24,16 +24,16 @@ Creating `merge requests <https://docs.gitlab.com/ee/user/project/merge_requests
 
 Contributions are welcome! Be sure to file an issue first (see above).
 If you know a fix for that issue, or you know a fix for a different one,
-you can create a pull request. Fork this repository, create a new branch
+you can create a merge request. Fork this repository, create a new branch
 from the 'main' branch, and make your changes on the new branch. Now,
-create a pull request on the origin repository (tb148/grogarium). We
-will review your pull request.
+create a merge request on the origin repository (tb148/grogarium). We
+will review your merge request.
 
 ******************
 Contributing rules
 ******************
 
--  Do one thing in a pull request. Open multiple pull requests if you
+-  Do one thing in a merge request. Open multiple merge requests if you
    want to add multiple things.
 -  Please write `Conventional
    Commits <https://www.conventionalcommits.org/en/v1.0.0/>`__. So we
