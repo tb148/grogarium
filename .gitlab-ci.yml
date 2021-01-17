@@ -5,7 +5,6 @@ build:
   script:
     - pip install poetry
     - poetry install
-    - dephell deps convert
 
 deploy:
   stage: deploy
