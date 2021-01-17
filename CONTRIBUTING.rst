@@ -7,20 +7,20 @@ For anyone who knows `Git <https://git-scm.com>`__ and
 this repository! Our code is open source. Be sure to follow our `Code of
 Conduct <https://github.com/tb148/grogarium/blob/main/CODE_OF_CONDUCT.md>`__.
 
-************************************************************************************************
-Filling `issues <https://docs.github.com/en/github/managing-your-work-on-github/about-issues>`__
-************************************************************************************************
+***************************************************************************
+Filling `issues <https://docs.gitlab.com/ee/user/project/issues/#issues>`__
+***************************************************************************
 
 Found a bug? Report it! Be sure to check if it is already reported by
 using the search bar
-`here <https://github.com/tb148/grogarium/issues>`__. If there are no
+`here <https://gitlab.com/tb148/grogarium/-/issues>`__. If there are no
 similar issues, you can create a new one. We will take a look at it.
 
 Also, feel free to ask questions, suggest new features, and more.
 
-******************************************************************************************************************************
-Creating `pull requests <https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests>`__
-******************************************************************************************************************************
+**************************************************************************************************************
+Creating `merge requests <https://docs.gitlab.com/ee/user/project/merge_requests/index.html#merge-requests>`__
+**************************************************************************************************************
 
 Contributions are welcome! Be sure to file an issue first (see above).
 If you know a fix for that issue, or you know a fix for a different one,
