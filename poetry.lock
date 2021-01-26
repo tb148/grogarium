@@ -175,8 +175,8 @@ python-versions = "*"
 
 [[package]]
 name = "chess"
-version = "1.3.3"
-description = "A pure Python chess library with move generation and validation, Polyglot opening book probing, PGN reading and writing, Gaviota tablebase probing, Syzygy tablebase probing and XBoard/UCI engine communication."
+version = "1.4.0"
+description = "A chess library with move generation and validation, Polyglot opening book probing, PGN reading and writing, Gaviota tablebase probing, Syzygy tablebase probing, and XBoard/UCI engine communication."
 category = "main"
 optional = false
 python-versions = ">=3.7"
@@ -1314,7 +1314,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "2362a1279260333c82de872a100a2c8ef40f3bdcfbf1e509c9e1398ea6ce3666"
+content-hash = "38fed7676d9c82a048859b113b9c244578798584663bfcb401b532ae1778107e"
 
 [metadata.files]
 aiohttp = [
@@ -1421,8 +1421,8 @@ chardet = [
     {file = "chardet-3.0.4.tar.gz", hash = "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"},
 ]
 chess = [
-    {file = "chess-1.3.3-py3-none-any.whl", hash = "sha256:961fd5fe8a555758674d8997514fdf7a158885c31720de80564368864bb2a369"},
-    {file = "chess-1.3.3.tar.gz", hash = "sha256:27920121dff243f88de2806f6364c9a9eaa67af59c1f183251c03ffdde4e0ac2"},
+    {file = "chess-1.4.0-py3-none-any.whl", hash = "sha256:823ab1bc8b1674e37e77e8d4ff8e758f37551dcdee4d106438fa22f12d3a7d9b"},
+    {file = "chess-1.4.0.tar.gz", hash = "sha256:590c979f25a26b8c621c6c312278fb5ba6cd6bdf39af9bd2553a7f1732295120"},
 ]
 cleo = [
     {file = "cleo-0.8.1-py2.py3-none-any.whl", hash = "sha256:141cda6dc94a92343be626bb87a0b6c86ae291dfc732a57bf04310d4b4201753"},
