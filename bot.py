@@ -126,7 +126,7 @@ async def eight_ball(ctx, *, question: str):
 )
 async def ping(ctx):
     """Test the internet connection of the bot."""
-    await ctx.channel.send(
+    await ctx.send(
         "{} :ping_pong: Pong!\n{}".format(
             ctx.author.mention,
             " ".join(
@@ -139,6 +139,13 @@ async def ping(ctx):
             ),
         )
     )
+
+
+@bot.command(hidden=True)
+@commands.is_owner()
+async def send(ctx, tchannel: discord.TextChannel, *, msg):
+    """Send something."""
+    tchannel.send(msg)
 
 
 @tasks.loop(seconds=config["stat-freq"])
