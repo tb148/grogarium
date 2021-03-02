@@ -104,7 +104,7 @@ usage = ""
 aliases = ["pong", "test", "network"]
 
 [util]
-name="Utility"
+name = "Utility"
 description = "Utilities that are not designed for fun."
 
 [calc]
