@@ -141,13 +141,6 @@ async def ping(ctx):
     )
 
 
-@bot.command(hidden=True)
-@commands.is_owner()
-async def send(ctx, tchannel: discord.TextChannel, *, msg):
-    """Send something."""
-    tchannel.send(msg)
-
-
 @tasks.loop(seconds=config["stat-freq"])
 async def status():
     """Change the status of the bot."""

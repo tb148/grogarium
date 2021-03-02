@@ -9,7 +9,9 @@ config = toml.load("config.toml")
 translator = google_trans_new.google_translator()
 
 
-class Util(commands.Cog, name="Utilities"):
+class Util(
+    commands.Cog, name=config["util"]["name"], description=config["util"]["description"]
+):
     """Utilities that are not designed for fun."""
 
     def __init__(self, bot):
@@ -88,4 +90,4 @@ def setup(bot):
 
 def teardown(bot):
     """Remove the cog from the bot."""
-    bot.remove_cog("Utilities")
+    bot.remove_cog(config["util"]["name"])

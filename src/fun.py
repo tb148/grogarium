@@ -13,7 +13,9 @@ config = toml.load("config.toml")
 translator = google_trans_new.google_translator()
 
 
-class Fun(commands.Cog, name="Fun"):
+class Fun(
+    commands.Cog, name=config["fun"]["name"], description=config["fun"]["description"]
+):
     """Fun commands that are not games."""
 
     def __init__(self, bot):
@@ -95,7 +97,7 @@ class Fun(commands.Cog, name="Fun"):
                 ).set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
             )
 
-    @commands.command(
+    @commands.group(
         name="necro",
         enabled=config["necro"]["enabled"],
         hidden=config["necro"]["hidden"],
@@ -104,12 +106,15 @@ class Fun(commands.Cog, name="Fun"):
         usage=config["necro"]["usage"],
         aliases=config["necro"]["aliases"],
     )
-    async def necro(
+    async def necro(self, ctx):
+        pass
+
+    @necro.command(name="rank")
+    async def rank(
         self,
         ctx,
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
-        top: typing.Optional[bool] = config["necro"]["top"],
     ):
         prev, score, cnt = None, {}, 0
         if posts <= 0:
@@ -126,36 +131,57 @@ class Fun(commands.Cog, name="Fun"):
             if post.author == ctx.author:
                 cnt += 1
             prev = post
-        if top:
+        if ctx.author in score:
             await ctx.send(
-                "{} :stadium: Here's the leaderboard you asked for:\n{}".format(
+                "{} :stopwatch: You necroposted for {} using {} posts, which is {} per post.".format(
                     ctx.author.mention,
-                    "\n".join(
-                        [
-                            "{} - {}".format(str(user), str(time))
-                            for (user, time) in sorted(
-                                score.items(), key=operator.itemgetter(1), reverse=True
-                            )
-                        ]
-                    ),
+                    str(score[ctx.author]),
+                    cnt,
+                    str(score[ctx.author] / cnt),
                 )
             )
         else:
-            if ctx.author in score:
-                await ctx.send(
-                    "{} :stopwatch: You necroposted for {} using {} posts, which is {} per post.".format(
-                        ctx.author.mention,
-                        str(score[ctx.author]),
-                        cnt,
-                        str(score[ctx.author] / cnt),
-                    )
+            await ctx.send(
+                "{} :negative_squared_cross_mark: You don't seem to have valid posts!".format(
+                    ctx.author.mention
                 )
-            else:
-                await ctx.send(
-                    "{} :negative_squared_cross_mark: You don't seem to have valid posts!".format(
-                        ctx.author.mention
-                    )
-                )
+            )
+
+    @necro.command(name="top")
+    async def top(
+        self,
+        ctx,
+        nec: discord.TextChannel,
+        posts: typing.Optional[int] = config["necro"]["posts"],
+    ):
+        prev, score, cnt = None, {}, 0
+        if posts <= 0:
+            hist = await nec.history(limit=None).flatten()
+        else:
+            hist = await nec.history(limit=posts).flatten()
+        for post in hist:
+            if post.author.bot and not config["necro"]["bot"]:
+                continue
+            if prev:
+                if prev.author not in score:
+                    score[prev.author] = datetime.timedelta()
+                score[prev.author] += prev.created_at - post.created_at
+            if post.author == ctx.author:
+                cnt += 1
+            prev = post
+        await ctx.send(
+            "{} :stadium: Here's the leaderboard you asked for:\n{}".format(
+                ctx.author.mention,
+                "\n".join(
+                    [
+                        "{} - {}".format(str(user), str(time))
+                        for (user, time) in sorted(
+                            score.items(), key=operator.itemgetter(1), reverse=True
+                        )
+                    ]
+                ),
+            )
+        )
 
 
 def setup(bot):
@@ -165,4 +191,4 @@ def setup(bot):
 
 def teardown(bot):
     """Remove the cog from the bot."""
-    bot.remove_cog("Fun")
+    bot.remove_cog(config["fun"]["name"])
