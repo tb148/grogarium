@@ -9,7 +9,7 @@ google-trans-new==1.*,>=1.1.9
 googletrans==3.*,>=3.0.0
 poetry==1.*,>=1.1.4
 pylint==2.*,>=2.6.0
-requests==2.*,>=2.25.1
+requests==2.*,>=2.24.0
 sphinx==3.*,>=3.4.3
 sympy==1.*,>=1.6.2
 toml==0.*,>=0.10.2

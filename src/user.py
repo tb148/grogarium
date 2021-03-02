@@ -11,7 +11,7 @@ class Usr(
     commands.Cog,
     name=config["usr"]["name"],
     description=config["usr"]["description"],
-    command_attrs={hidden: True},
+    command_attrs=dict(hidden=True),
 ):
     """Use this bot as an user."""
 
