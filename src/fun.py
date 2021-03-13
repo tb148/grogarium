@@ -97,6 +97,26 @@ class Fun(
                 ).set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
             )
 
+    async def get_necro(
+        self,
+        nec: discord.TextChannel,
+        posts: typing.Optional[int] = config["necro"]["posts"],
+    ):
+        prev, score = None, dict()
+        if posts <= 0:
+            hist = await nec.history(limit=None).flatten()
+        else:
+            hist = await nec.history(limit=posts).flatten()
+        for post in hist:
+            if post.author.bot and not config["necro"]["bot"]:
+                continue
+            if prev:
+                if prev.author not in score:
+                    score[prev.author] = datetime.timedelta()
+                score[prev.author] += prev.created_at - post.created_at
+            prev = post
+        return score
+
     @commands.group(
         name="necro",
         enabled=config["necro"]["enabled"],
@@ -116,28 +136,12 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        prev, score, cnt = None, {}, 0
-        if posts <= 0:
-            hist = await nec.history(limit=None).flatten()
-        else:
-            hist = await nec.history(limit=posts).flatten()
-        for post in hist:
-            if post.author.bot and not config["necro"]["bot"]:
-                continue
-            if prev:
-                if prev.author not in score:
-                    score[prev.author] = datetime.timedelta()
-                score[prev.author] += prev.created_at - post.created_at
-            if post.author == ctx.author:
-                cnt += 1
-            prev = post
+        score = await self.get_necro(nec, posts)
         if ctx.author in score:
             await ctx.send(
-                "{} :stopwatch: You necroposted for {} using {} posts, which is {} per post.".format(
+                "{} :stopwatch: You necroposted for {}.".format(
                     ctx.author.mention,
                     str(score[ctx.author]),
-                    cnt,
-                    str(score[ctx.author] / cnt),
                 )
             )
         else:
@@ -154,21 +158,7 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        prev, score, cnt = None, {}, 0
-        if posts <= 0:
-            hist = await nec.history(limit=None).flatten()
-        else:
-            hist = await nec.history(limit=posts).flatten()
-        for post in hist:
-            if post.author.bot and not config["necro"]["bot"]:
-                continue
-            if prev:
-                if prev.author not in score:
-                    score[prev.author] = datetime.timedelta()
-                score[prev.author] += prev.created_at - post.created_at
-            if post.author == ctx.author:
-                cnt += 1
-            prev = post
+        score = await self.get_necro(nec, posts)
         await ctx.send(
             "{} :stadium: Here's the leaderboard you asked for:\n{}".format(
                 ctx.author.mention,
