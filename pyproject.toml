@@ -44,7 +44,6 @@ sphinx = "^3.4.3"
 poetry = "^1.1.4"
 dephell = "^0.8.3"
 jedi = "^0.18.0"
-snooty = "^0.8.2-alpha.0"
 autopep8 = "^1.5.7"
 pylama = "^7.7.1"
 
