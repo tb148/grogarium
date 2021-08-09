@@ -22,7 +22,9 @@ class Imag(
     async def get_imag(self, url):
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as resp:
-                return discord.File(io.BytesIO(await resp.read()), "cool_image.jpeg")
+                return discord.File(
+                    io.BytesIO(await resp.read()), "cool_image.jpeg"
+                )
 
     @commands.command(
         name="human",
@@ -50,7 +52,9 @@ class Imag(
     )
     async def arts(self, ctx):
         """This Artwork Does Not Exist."""
-        await ctx.send(file=await self.get_imag("https://thisartworkdoesnotexist.com"))
+        await ctx.send(
+            file=await self.get_imag("https://thisartworkdoesnotexist.com")
+        )
 
     @commands.command(
         name="cats",
@@ -63,7 +67,9 @@ class Imag(
     )
     async def cats(self, ctx):
         """This Cat Does Not Exist."""
-        await ctx.send(file=await self.get_imag("https://thiscatdoesnotexist.com"))
+        await ctx.send(
+            file=await self.get_imag("https://thiscatdoesnotexist.com")
+        )
 
     @commands.command(
         name="horse",
@@ -76,7 +82,9 @@ class Imag(
     )
     async def horse(self, ctx):
         """This Horse Does Not Exist."""
-        await ctx.send(file=await self.get_imag("https://thishorsedoesnotexist.com"))
+        await ctx.send(
+            file=await self.get_imag("https://thishorsedoesnotexist.com")
+        )
 
 
 def setup(bot):

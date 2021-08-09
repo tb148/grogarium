@@ -10,7 +10,9 @@ translator = google_trans_new.google_translator()
 
 
 class Util(
-    commands.Cog, name=config["util"]["name"], description=config["util"]["description"]
+    commands.Cog,
+    name=config["util"]["name"],
+    description=config["util"]["description"],
 ):
     """Utilities that are not designed for fun."""
 

@@ -23,19 +23,20 @@ parser.add_argument(
     "--verbose",
     default=1,
     action="count",
-    help="Verbosity. -v for default logging, -vv for more logging, -vvv for debug logging.",
+    help="Verbosity. More v means more verbose logging.",
 )
 parser.add_argument(
-    "-l",
-    "--logfile",
-    default="grogar.log",
-    help="The file to write logs to.",
+    "-l", "--logfile", default="grogar.log", help="The file to write logs to."
 )
 arg = parser.parse_args()
-token, verbosity, logfile = (arg.token, arg.verbose, arg.logfile)
+(
+    token,
+    verbosity,
+    logfile,
+) = (arg.token, arg.verbose, arg.logfile)
 logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
 bot = commands.AutoShardedBot(
-    command_prefix=commands.when_mentioned,
+    command_prefix=commands.when_mentioned_or("Gr!"),
     case_insensitive=config["case-insensitive"],
     description=config["description"],
     owner_ids=config["owners"],
@@ -72,7 +73,8 @@ async def roll(ctx, sizes: commands.Greedy[int]):
     ):
         await ctx.send(
             "{} :game_die: {}".format(
-                ctx.author.mention, random.choice(config["roll"]["warnings"]["limits"])
+                ctx.author.mention,
+                random.choice(config["roll"]["warnings"]["limits"]),
             )
         )
         return
@@ -110,7 +112,9 @@ async def eight_ball(ctx, *, question: str):
     """Ask a question, get an answer."""
     await ctx.send(
         "{} :8ball: {}\n> {}".format(
-            ctx.author.mention, random.choice(config["8ball"]["answers"]), question
+            ctx.author.mention,
+            random.choice(config["8ball"]["answers"]),
+            question,
         )
     )
 
@@ -144,7 +148,9 @@ async def ping(ctx):
 @tasks.loop(seconds=config["stat-freq"])
 async def status():
     """Change the status of the bot."""
-    await bot.change_presence(activity=discord.Game(random.choice(config["status"])))
+    await bot.change_presence(
+        activity=discord.Game(random.choice(config["status"]))
+    )
 
 
 @bot.event

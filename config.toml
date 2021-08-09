@@ -19,9 +19,9 @@ ready = [
     "It's a bird! It's a plane! Wait, no, it's just Grogar.",
 ]
 status = [
-    "Try @Grogar help",
-    "Send @Grogar help",
-    "Type @Grogar help",
+    "Try Gr!help",
+    "Send Gr!help",
+    "Type Gr!help",
     "PREFIX = MENTION",
     "Mention me before commands",
     "My prefix is my mention",
@@ -214,3 +214,16 @@ aliases = ["horses"]
 [usr]
 name = "User"
 description = "Use this bot as an user."
+
+[tbgs]
+name = "TBGforums"
+description = "Sync messages with TBGForums."
+
+[sync]
+enabled = true
+hidden = false
+help = "Sync messages with TBGForums."
+brief = "Sync messages"
+usage = ""
+aliases = ["post"]
+sync-freq = 180

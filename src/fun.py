@@ -14,7 +14,9 @@ translator = google_trans_new.google_translator()
 
 
 class Fun(
-    commands.Cog, name=config["fun"]["name"], description=config["fun"]["description"]
+    commands.Cog,
+    name=config["fun"]["name"],
+    description=config["fun"]["description"],
 ):
     """Fun commands that are not games."""
 
@@ -36,12 +38,16 @@ class Fun(
         if count > config["badgt"]["limit"]:
             await ctx.send(
                 "{} :abc: {}\n".format(
-                    ctx.author.mention, random.choice(config["badgt"]["warnings"])
+                    ctx.author.mention,
+                    random.choice(config["badgt"]["warnings"]),
                 )
             )
             return
-        prev, result = src, text
-        for lang in random.choices([_ for _ in googletrans.LANGUAGES], k=count):
+        (
+            prev,
+            result,
+        ) = (src, text)
+        for lang in random.choices(googletrans.LANGUAGES, k=count):
             result = translator.translate(result, lang_tgt=lang, lang_src=prev)
             prev = lang
         await ctx.send(
@@ -61,13 +67,19 @@ class Fun(
         aliases=config["slap"]["aliases"],
     )
     async def slap(
-        self, ctx, users: commands.Greedy[typing.Union[discord.Member, discord.User]]
+        self,
+        ctx,
+        users: commands.Greedy[
+            typing.Union[
+                discord.Member,
+                discord.User,
+            ]
+        ],
     ):
         """Slaps somebody."""
         await ctx.send(
             "{} :hand_splayed: You slapped {}.".format(
-                ctx.author.mention,
-                ", ".join([str(_) for _ in users]),
+                ctx.author.mention, ", ".join([str(_) for _ in users])
             )
         )
 
@@ -85,8 +97,8 @@ class Fun(
         if random.random() > config["game"]["win-chance"]:
             await ctx.send(
                 "{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
-                    ctx.author.mention,
-                ),
+                    ctx.author.mention
+                )
             )
         else:
             await ctx.send(
@@ -94,7 +106,9 @@ class Fun(
                     title="xkcd: Anti-Mindvirus",
                     description="I'm as surprised as you!  I didn't think it was possible.",
                     url="https://xkcd.com/391/",
-                ).set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
+                ).set_image(
+                    url="https://imgs.xkcd.com/comics/anti_mind_virus.png"
+                )
             )
 
     async def get_necro(
@@ -102,7 +116,10 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        prev, score = None, dict()
+        (
+            prev,
+            score,
+        ) = (None, dict())
         if posts <= 0:
             hist = await nec.history(limit=None).flatten()
         else:
@@ -140,8 +157,7 @@ class Fun(
         if ctx.author in score:
             await ctx.send(
                 "{} :stopwatch: You necroposted for {}.".format(
-                    ctx.author.mention,
-                    str(score[ctx.author]),
+                    ctx.author.mention, str(score[ctx.author])
                 )
             )
         else:
@@ -165,8 +181,10 @@ class Fun(
                 "\n".join(
                     [
                         "{} - {}".format(str(user), str(time))
-                        for (user, time) in sorted(
-                            score.items(), key=operator.itemgetter(1), reverse=True
+                        for (user, time,) in sorted(
+                            score.items(),
+                            key=operator.itemgetter(1),
+                            reverse=True,
                         )
                     ]
                 ),

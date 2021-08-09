@@ -28,7 +28,9 @@ class Usr(
 
     @commands.command(name="erase")
     @commands.is_owner()
-    async def erase(self, ctx, msg: discord.Message, time: typing.Optional[float]):
+    async def erase(
+        self, ctx, msg: discord.Message, time: typing.Optional[float]
+    ):
         """Delete a message."""
         await msg.delete(delay=time)
         await ctx.send("Deleted the message.")
@@ -37,7 +39,7 @@ class Usr(
     @commands.is_owner()
     async def edit(self, ctx, msg: discord.Message, *, text: str):
         """Delete a message."""
-        await msg.edit(text)
+        await msg.edit(content=text)
         await ctx.send("Edited the message to {}.".format(text))
 
     @commands.command(name="reply")
@@ -46,13 +48,6 @@ class Usr(
         """Reply to a message."""
         await msg.reply(text)
         await ctx.send("Replied {} to {}.".format(text, msg.content))
-
-    @commands.command(name="react")
-    @commands.is_owner()
-    async def react(self, ctx, msg: discord.Message, *, reaction: discord.Emoji):
-        """React to a message."""
-        await msg.add_reaction(reaction)
-        await ctx.send("Reacted to {}.".format(msg.content))
 
 
 def setup(bot):
