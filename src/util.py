@@ -3,7 +3,9 @@ import googletrans
 import google_trans_new
 import sympy
 import toml
-from discord.ext import commands
+from discord.ext import (
+    commands,
+)
 
 config = toml.load("config.toml")
 translator = google_trans_new.google_translator()
@@ -16,7 +18,10 @@ class Util(
 ):
     """Utilities that are not designed for fun."""
 
-    def __init__(self, bot):
+    def __init__(
+        self,
+        bot,
+    ):
         """Initialize the cog."""
         self.bot = bot
 
@@ -33,10 +38,16 @@ class Util(
         """Calculate and/or simplify mathematical expressions. Certain symbols may be used."""
         expression = "".join(expression.strip("`").split("\\"))
         sympy.symbols("x y z t")
-        sympy.symbols("k m n", integer=True)
-        sympy.symbols("f g h", cls=sympy.Function)
-        await ctx.send(
-            "{} :1234:\n```{} = {}```".format(
+        sympy.symbols(
+            "k m n",
+            integer=True,
+        )
+        sympy.symbols(
+            "f g h",
+            cls=sympy.Function,
+        )
+        await ctx.reply(
+            content="{} :1234:\n```{} = {}```".format(
                 ctx.author.mention,
                 expression,
                 sympy.simplify(sympy.sympify(expression)),
@@ -54,10 +65,14 @@ class Util(
     )
     async def trans(self, ctx, src: str, dest: str, *, text: str):
         """Translate a word or sentence to another language."""
-        await ctx.send(
-            "{} :abc:\n> {}".format(
+        await ctx.reply(
+            content="{} :abc:\n> {}".format(
                 ctx.author.mention,
-                translator.translate(text, lang_tgt=dest, lang_src=src),
+                translator.translate(
+                    text,
+                    lang_tgt=dest,
+                    lang_src=src,
+                ),
             )
         )
 
@@ -70,14 +85,20 @@ class Util(
         usage=config["langs"]["usage"],
         aliases=config["langs"]["aliases"],
     )
-    async def langs(self, ctx):
+    async def langs(
+        self,
+        ctx,
+    ):
         """Output a list that contains all the langcodes you can use."""
-        await ctx.send(
-            "{} :abc: Here's all the langcodes you can use:\n{}".format(
+        await ctx.reply(
+            content="{} :abc: Here's all the langcodes you can use:\n{}".format(
                 ctx.author.mention,
                 ", ".join(
                     [
-                        "{} - {}".format(_, googletrans.LANGUAGES[_])
+                        "{} - {}".format(
+                            _,
+                            googletrans.LANGUAGES[_],
+                        )
                         for _ in googletrans.LANGUAGES
                     ]
                 ),
@@ -85,11 +106,15 @@ class Util(
         )
 
 
-def setup(bot):
+def setup(
+    bot,
+):
     """Add the cog to the bot."""
     bot.add_cog(Util(bot))
 
 
-def teardown(bot):
+def teardown(
+    bot,
+):
     """Remove the cog from the bot."""
     bot.remove_cog(config["util"]["name"])

@@ -6,7 +6,10 @@ import random
 
 import discord
 import toml
-from discord.ext import commands, tasks
+from discord.ext import (
+    commands,
+    tasks,
+)
 
 config = toml.load("config.toml")
 
@@ -26,15 +29,21 @@ parser.add_argument(
     help="Verbosity. More v means more verbose logging.",
 )
 parser.add_argument(
-    "-l", "--logfile", default="grogar.log", help="The file to write logs to."
+    "-l",
+    "--logfile",
+    default="grogar.log",
+    help="The file to write logs to.",
 )
 arg = parser.parse_args()
-(
-    token,
-    verbosity,
-    logfile,
-) = (arg.token, arg.verbose, arg.logfile)
-logging.basicConfig(level=40 - 10 * verbosity, filename=logfile)
+(token, verbosity, logfile,) = (
+    arg.token,
+    arg.verbose,
+    arg.logfile,
+)
+logging.basicConfig(
+    level=40 - 10 * verbosity,
+    filename=logfile,
+)
 bot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or("Gr!"),
     case_insensitive=config["case-insensitive"],
@@ -52,14 +61,17 @@ bot = commands.AutoShardedBot(
     usage=config["roll"]["usage"],
     aliases=config["roll"]["aliases"],
 )
-async def roll(ctx, sizes: commands.Greedy[int]):
+async def roll(
+    ctx,
+    sizes: commands.Greedy[int],
+):
     """Roll some dice."""
     if len(sizes) == 0:
         sizes = [6]
     if len(sizes) == 2:
         if sizes[0] < 1 or sizes[1] > config["roll"]["limits"]["count"]:
-            await ctx.send(
-                "{} :game_die: {}".format(
+            await ctx.reply(
+                content="{} :game_die: {}".format(
                     ctx.author.mention,
                     random.choice(config["roll"]["warnings"]["limits"]),
                 )
@@ -71,8 +83,8 @@ async def roll(ctx, sizes: commands.Greedy[int]):
         or min(sizes) < 1
         or max(sizes) > config["roll"]["limits"]["size"]
     ):
-        await ctx.send(
-            "{} :game_die: {}".format(
+        await ctx.reply(
+            content="{} :game_die: {}".format(
                 ctx.author.mention,
                 random.choice(config["roll"]["warnings"]["limits"]),
             )
@@ -84,17 +96,25 @@ async def roll(ctx, sizes: commands.Greedy[int]):
         or min(sizes) == 1
         and not config["roll"]["one-faced"]["any"]
     ):
-        await ctx.send(
-            "{} :game_die: {}".format(
+        await ctx.reply(
+            content="{} :game_die: {}".format(
                 ctx.author.mention,
                 random.choice(config["roll"]["warnings"]["one-faced"]),
             )
         )
         return
-    dice = [random.randint(1, _) for _ in sizes]
-    await ctx.send(
-        "{} :game_die: You rolled a {}!\n```{}```".format(
-            ctx.author.mention, sum(dice), ", ".join([str(_) for _ in dice])
+    dice = [
+        random.randint(
+            1,
+            _,
+        )
+        for _ in sizes
+    ]
+    await ctx.reply(
+        content="{} :game_die: You rolled a {}!\n```{}```".format(
+            ctx.author.mention,
+            sum(dice),
+            ", ".join([str(_) for _ in dice]),
         )
     )
 
@@ -110,8 +130,8 @@ async def roll(ctx, sizes: commands.Greedy[int]):
 )
 async def eight_ball(ctx, *, question: str):
     """Ask a question, get an answer."""
-    await ctx.send(
-        "{} :8ball: {}\n> {}".format(
+    await ctx.reply(
+        content="{} :8ball: {}\n> {}".format(
             ctx.author.mention,
             random.choice(config["8ball"]["answers"]),
             question,
@@ -128,17 +148,23 @@ async def eight_ball(ctx, *, question: str):
     usage=config["ping"]["usage"],
     aliases=config["ping"]["aliases"],
 )
-async def ping(ctx):
+async def ping(
+    ctx,
+):
     """Test the internet connection of the bot."""
-    await ctx.send(
-        "{} :ping_pong: Pong!\n{}".format(
+    await ctx.reply(
+        content="{} :ping_pong: Pong!\n{}".format(
             ctx.author.mention,
             " ".join(
                 [
                     "Pinging shard {} took {}ms.".format(
-                        shard_id, round(latency * 1000)
+                        shard_id,
+                        round(latency * 1000),
                     )
-                    for (shard_id, latency) in bot.latencies
+                    for (
+                        shard_id,
+                        latency,
+                    ) in bot.latencies
                 ]
             ),
         )
@@ -164,11 +190,16 @@ async def on_ready():
 
 
 @bot.event
-async def on_command_error(ctx, error):
+async def on_command_error(
+    ctx,
+    error,
+):
     """Tell the user that an error occured."""
     await ctx.channel.send(
         "{} {}\n```{}```".format(
-            ctx.author.mention, random.choice(config["error"]), error
+            ctx.author.mention,
+            random.choice(config["error"]),
+            error,
         )
     )
 

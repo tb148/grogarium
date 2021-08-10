@@ -2,7 +2,9 @@
 import toml
 import typing
 import discord
-from discord.ext import commands
+from discord.ext import (
+    commands,
+)
 
 config = toml.load("config.toml")
 
@@ -15,7 +17,10 @@ class Usr(
 ):
     """Use this bot as an user."""
 
-    def __init__(self, bot):
+    def __init__(
+        self,
+        bot,
+    ):
         """Initialize the cog."""
         self.bot = bot
 
@@ -24,37 +29,54 @@ class Usr(
     async def send(self, ctx, tchannel: discord.TextChannel, *, msg: str):
         """Send something."""
         await tchannel.send(msg)
-        await ctx.send("Sent {} to {}.".format(msg, tchannel.name))
+        await ctx.reply(
+            content="Sent {} to {}.".format(
+                msg,
+                tchannel.name,
+            )
+        )
 
     @commands.command(name="erase")
     @commands.is_owner()
     async def erase(
-        self, ctx, msg: discord.Message, time: typing.Optional[float]
+        self,
+        ctx,
+        msg: discord.Message,
+        time: typing.Optional[float],
     ):
         """Delete a message."""
         await msg.delete(delay=time)
-        await ctx.send("Deleted the message.")
+        await ctx.reply(content="Deleted the message.")
 
     @commands.command(name="edit")
     @commands.is_owner()
     async def edit(self, ctx, msg: discord.Message, *, text: str):
         """Delete a message."""
         await msg.edit(content=text)
-        await ctx.send("Edited the message to {}.".format(text))
+        await ctx.reply(content="Edited the message to {}.".format(text))
 
     @commands.command(name="reply")
     @commands.is_owner()
     async def reply(self, ctx, msg: discord.Message, *, text: str):
         """Reply to a message."""
         await msg.reply(text)
-        await ctx.send("Replied {} to {}.".format(text, msg.content))
+        await ctx.reply(
+            content="Replied {} to {}.".format(
+                text,
+                msg.content,
+            )
+        )
 
 
-def setup(bot):
+def setup(
+    bot,
+):
     """Add the cog to the bot."""
     bot.add_cog(Usr(bot))
 
 
-def teardown(bot):
+def teardown(
+    bot,
+):
     """Remove the cog from the bot."""
     bot.remove_cog("User")

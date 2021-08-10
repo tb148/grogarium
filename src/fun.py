@@ -7,7 +7,9 @@ import operator
 import random
 import toml
 import discord
-from discord.ext import commands
+from discord.ext import (
+    commands,
+)
 
 config = toml.load("config.toml")
 translator = google_trans_new.google_translator()
@@ -20,7 +22,10 @@ class Fun(
 ):
     """Fun commands that are not games."""
 
-    def __init__(self, bot):
+    def __init__(
+        self,
+        bot,
+    ):
         """Initialize the cog."""
         self.bot = bot
 
@@ -36,24 +41,35 @@ class Fun(
     async def badgt(self, ctx, src: str, count: int, dest: str, *, text: str):
         """Badly translate a word or sentence to another language."""
         if count > config["badgt"]["limit"]:
-            await ctx.send(
-                "{} :abc: {}\n".format(
+            await ctx.reply(
+                content="{} :abc: {}\n".format(
                     ctx.author.mention,
                     random.choice(config["badgt"]["warnings"]),
                 )
             )
             return
-        (
-            prev,
-            result,
-        ) = (src, text)
-        for lang in random.choices(googletrans.LANGUAGES, k=count):
-            result = translator.translate(result, lang_tgt=lang, lang_src=prev)
+        (prev, result,) = (
+            src,
+            text,
+        )
+        for lang in random.choices(
+            googletrans.LANGUAGES,
+            k=count,
+        ):
+            result = translator.translate(
+                result,
+                lang_tgt=lang,
+                lang_src=prev,
+            )
             prev = lang
-        await ctx.send(
-            "{} :abc:\n> {}".format(
+        await ctx.reply(
+            content="{} :abc:\n> {}".format(
                 ctx.author.mention,
-                translator.translate(result, lang_tgt=dest, lang_src=prev),
+                translator.translate(
+                    result,
+                    lang_tgt=dest,
+                    lang_src=prev,
+                ),
             )
         )
 
@@ -77,9 +93,10 @@ class Fun(
         ],
     ):
         """Slaps somebody."""
-        await ctx.send(
-            "{} :hand_splayed: You slapped {}.".format(
-                ctx.author.mention, ", ".join([str(_) for _ in users])
+        await ctx.reply(
+            content="{} :hand_splayed: You slapped {}.".format(
+                ctx.author.mention,
+                ", ".join([str(_) for _ in users]),
             )
         )
 
@@ -92,16 +109,19 @@ class Fun(
         usage=config["game"]["usage"],
         aliases=config["game"]["aliases"],
     )
-    async def game(self, ctx):
+    async def game(
+        self,
+        ctx,
+    ):
         """Plays the game."""
         if random.random() > config["game"]["win-chance"]:
-            await ctx.send(
-                "{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
+            await ctx.reply(
+                content="{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
                     ctx.author.mention
                 )
             )
         else:
-            await ctx.send(
+            await ctx.reply(
                 embed=discord.Embed(
                     title="xkcd: Anti-Mindvirus",
                     description="I'm as surprised as you!  I didn't think it was possible.",
@@ -116,10 +136,10 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        (
-            prev,
-            score,
-        ) = (None, dict())
+        (prev, score,) = (
+            None,
+            dict(),
+        )
         if posts <= 0:
             hist = await nec.history(limit=None).flatten()
         else:
@@ -143,7 +163,10 @@ class Fun(
         usage=config["necro"]["usage"],
         aliases=config["necro"]["aliases"],
     )
-    async def necro(self, ctx):
+    async def necro(
+        self,
+        ctx,
+    ):
         pass
 
     @necro.command(name="rank")
@@ -153,16 +176,20 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        score = await self.get_necro(nec, posts)
+        score = await self.get_necro(
+            nec,
+            posts,
+        )
         if ctx.author in score:
-            await ctx.send(
-                "{} :stopwatch: You necroposted for {}.".format(
-                    ctx.author.mention, str(score[ctx.author])
+            await ctx.reply(
+                content="{} :stopwatch: You necroposted for {}.".format(
+                    ctx.author.mention,
+                    str(score[ctx.author]),
                 )
             )
         else:
-            await ctx.send(
-                "{} :negative_squared_cross_mark: You don't seem to have valid posts!".format(
+            await ctx.reply(
+                content="{} :negative_squared_cross_mark: You don't seem to have valid posts!".format(
                     ctx.author.mention
                 )
             )
@@ -174,13 +201,19 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        score = await self.get_necro(nec, posts)
-        await ctx.send(
-            "{} :stadium: Here's the leaderboard you asked for:\n{}".format(
+        score = await self.get_necro(
+            nec,
+            posts,
+        )
+        await ctx.reply(
+            content="{} :stadium: Here's the leaderboard you asked for:\n{}".format(
                 ctx.author.mention,
                 "\n".join(
                     [
-                        "{} - {}".format(str(user), str(time))
+                        "{} - {}".format(
+                            str(user),
+                            str(time),
+                        )
                         for (user, time,) in sorted(
                             score.items(),
                             key=operator.itemgetter(1),
@@ -192,11 +225,15 @@ class Fun(
         )
 
 
-def setup(bot):
+def setup(
+    bot,
+):
     """Add the cog to the bot."""
     bot.add_cog(Fun(bot))
 
 
-def teardown(bot):
+def teardown(
+    bot,
+):
     """Remove the cog from the bot."""
     bot.remove_cog(config["fun"]["name"])
