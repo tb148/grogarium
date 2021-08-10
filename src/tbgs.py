@@ -43,7 +43,9 @@ class Tbgs(
     async def sync(self, ctx, msg: discord.Message):
         """Sync messages with TBGForums."""
         self.msg += "[quote={}]{}[/quote]".format(str(msg.author), msg.content)
-        await ctx.send("Message {} added to queue.".format(msg.id))
+        await ctx.send(
+            "{} Message {} added to queue.".format(ctx.author.mention, msg.id)
+        )
 
     @tasks.loop(seconds=config["sync"]["sync-freq"])
     async def autosync(self):
