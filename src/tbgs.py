@@ -48,8 +48,6 @@ class Tbgs(
     @tasks.loop(seconds=config["sync"]["sync-freq"])
     async def autosync(self):
         """Sync messages with TBGForums."""
-        if self.msg == "":
-            return
         form = {"form_sent": "1"}
         form["req_message"] = self.msg
         self.tbgs.post(
