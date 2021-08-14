@@ -59,6 +59,7 @@ class Tbgs(
         """Sync messages with TBGForums."""
         if msg.content == "":
             await ctx.send("You can't sync files or embeds!")
+            return
         self.msg += "[quote={}]{}[/quote]".format(
             str(msg.author),
             msg.content,
