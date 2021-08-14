@@ -53,17 +53,18 @@ class Tbgs(
     )
     async def sync(
         self,
-        ctx,
+        ctx: commands.Context,
         msg: discord.Message,
     ):
         """Sync messages with TBGForums."""
+        if msg.content == "":
+            await ctx.send("You can't sync files or embeds!")
         self.msg += "[quote={}]{}[/quote]".format(
             str(msg.author),
             msg.content,
         )
-        await ctx.reply(
-            content="{} Message {} added to queue.".format(
-                ctx.author.mention,
+        await ctx.send(
+            "Message {} added to queue.".format(
                 msg.id,
             )
         )

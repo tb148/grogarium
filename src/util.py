@@ -34,8 +34,8 @@ class Util(
         usage=config["calc"]["usage"],
         aliases=config["calc"]["aliases"],
     )
-    async def calc(self, ctx, *, expression: str):
-        """Calculate and/or simplify mathematical expressions. Certain symbols may be used."""
+    async def calc(self, ctx: commands.Context, *, expression: str):
+        """Calculate and/or simplify mathematical expressions."""
         expression = "".join(expression.strip("`").split("\\"))
         sympy.symbols("x y z t")
         sympy.symbols(
@@ -46,9 +46,8 @@ class Util(
             "f g h",
             cls=sympy.Function,
         )
-        await ctx.reply(
-            content="{} :1234:\n```{} = {}```".format(
-                ctx.author.mention,
+        await ctx.send(
+            "```{} = {}```".format(
                 expression,
                 sympy.simplify(sympy.sympify(expression)),
             )
@@ -63,16 +62,15 @@ class Util(
         usage=config["trans"]["usage"],
         aliases=config["trans"]["aliases"],
     )
-    async def trans(self, ctx, src: str, dest: str, *, text: str):
+    async def trans(
+        self, ctx: commands.Context, src: str, dest: str, *, text: str
+    ):
         """Translate a word or sentence to another language."""
-        await ctx.reply(
-            content="{} :abc:\n> {}".format(
-                ctx.author.mention,
-                translator.translate(
-                    text,
-                    lang_tgt=dest,
-                    lang_src=src,
-                ),
+        await ctx.send(
+            translator.translate(
+                text,
+                lang_tgt=dest,
+                lang_src=src,
             )
         )
 
@@ -87,12 +85,11 @@ class Util(
     )
     async def langs(
         self,
-        ctx,
+        ctx: commands.Context,
     ):
         """Output a list that contains all the langcodes you can use."""
-        await ctx.reply(
-            content="{} :abc: Here's all the langcodes you can use:\n{}".format(
-                ctx.author.mention,
+        await ctx.send(
+            "Here's all the langcodes you can use:\n{}".format(
                 ", ".join(
                     [
                         "{} - {}".format(

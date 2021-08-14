@@ -62,7 +62,7 @@ bot = commands.AutoShardedBot(
     aliases=config["roll"]["aliases"],
 )
 async def roll(
-    ctx,
+    ctx: commands.Context,
     sizes: commands.Greedy[int],
 ):
     """Roll some dice."""
@@ -70,11 +70,8 @@ async def roll(
         sizes = [6]
     if len(sizes) == 2:
         if sizes[0] < 1 or sizes[1] > config["roll"]["limits"]["count"]:
-            await ctx.reply(
-                content="{} :game_die: {}".format(
-                    ctx.author.mention,
-                    random.choice(config["roll"]["warnings"]["limits"]),
-                )
+            await ctx.send(
+                random.choice(config["roll"]["warnings"]["limits"]),
             )
             return
         sizes = [sizes[1] for _ in range(sizes[0])]
@@ -83,11 +80,8 @@ async def roll(
         or min(sizes) < 1
         or max(sizes) > config["roll"]["limits"]["size"]
     ):
-        await ctx.reply(
-            content="{} :game_die: {}".format(
-                ctx.author.mention,
-                random.choice(config["roll"]["warnings"]["limits"]),
-            )
+        await ctx.send(
+            random.choice(config["roll"]["warnings"]["limits"]),
         )
         return
     if (
@@ -96,11 +90,8 @@ async def roll(
         or min(sizes) == 1
         and not config["roll"]["one-faced"]["any"]
     ):
-        await ctx.reply(
-            content="{} :game_die: {}".format(
-                ctx.author.mention,
-                random.choice(config["roll"]["warnings"]["one-faced"]),
-            )
+        await ctx.send(
+            random.choice(config["roll"]["warnings"]["one-faced"]),
         )
         return
     dice = [
@@ -110,9 +101,8 @@ async def roll(
         )
         for _ in sizes
     ]
-    await ctx.reply(
-        content="{} :game_die: You rolled a {}!\n```{}```".format(
-            ctx.author.mention,
+    await ctx.send(
+        "You rolled a {}!\n```{}```".format(
             sum(dice),
             ", ".join([str(_) for _ in dice]),
         )
@@ -128,14 +118,10 @@ async def roll(
     usage=config["8ball"]["usage"],
     aliases=config["8ball"]["aliases"],
 )
-async def eight_ball(ctx, *, question: str):
+async def eight_ball(ctx: commands.Context, *, question: str):
     """Ask a question, get an answer."""
-    await ctx.reply(
-        content="{} :8ball: {}\n> {}".format(
-            ctx.author.mention,
-            random.choice(config["8ball"]["answers"]),
-            question,
-        )
+    await ctx.send(
+        random.choice(config["8ball"]["answers"]),
     )
 
 
@@ -149,13 +135,12 @@ async def eight_ball(ctx, *, question: str):
     aliases=config["ping"]["aliases"],
 )
 async def ping(
-    ctx,
+    ctx: commands.Context,
 ):
     """Test the internet connection of the bot."""
-    await ctx.reply(
-        content="{} :ping_pong: Pong!\n{}".format(
-            ctx.author.mention,
-            " ".join(
+    await ctx.send(
+        "Pong!\n{}".format(
+            "\n".join(
                 [
                     "Pinging shard {} took {}ms.".format(
                         shard_id,
@@ -191,7 +176,7 @@ async def on_ready():
 
 @bot.event
 async def on_command_error(
-    ctx,
+    ctx: commands.Context,
     error,
 ):
     """Tell the user that an error occured."""

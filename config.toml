@@ -110,7 +110,7 @@ description = "Utilities that are not designed for fun."
 [calc]
 enabled = true
 hidden = false
-help = "Calculate and/or simplify mathematical expressions. Certain symbols may be used."
+help = "Calculate and/or simplify mathematical expressions."
 brief = "Calculate"
 usage = "<expression>"
 aliases = ["calculate", "math"]

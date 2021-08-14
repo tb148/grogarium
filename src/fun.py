@@ -38,15 +38,18 @@ class Fun(
         usage=config["badgt"]["usage"],
         aliases=config["badgt"]["aliases"],
     )
-    async def badgt(self, ctx, src: str, count: int, dest: str, *, text: str):
+    async def badgt(
+        self,
+        ctx: commands.Context,
+        src: str,
+        count: int,
+        dest: str,
+        *,
+        text: str
+    ):
         """Badly translate a word or sentence to another language."""
         if count > config["badgt"]["limit"]:
-            await ctx.reply(
-                content="{} :abc: {}\n".format(
-                    ctx.author.mention,
-                    random.choice(config["badgt"]["warnings"]),
-                )
-            )
+            await ctx.send(random.choice(config["badgt"]["warnings"]))
             return
         (prev, result,) = (
             src,
@@ -62,14 +65,11 @@ class Fun(
                 lang_src=prev,
             )
             prev = lang
-        await ctx.reply(
-            content="{} :abc:\n> {}".format(
-                ctx.author.mention,
-                translator.translate(
-                    result,
-                    lang_tgt=dest,
-                    lang_src=prev,
-                ),
+        await ctx.send(
+            translator.translate(
+                result,
+                lang_tgt=dest,
+                lang_src=prev,
             )
         )
 
@@ -84,7 +84,7 @@ class Fun(
     )
     async def slap(
         self,
-        ctx,
+        ctx: commands.Context,
         users: commands.Greedy[
             typing.Union[
                 discord.Member,
@@ -93,9 +93,8 @@ class Fun(
         ],
     ):
         """Slaps somebody."""
-        await ctx.reply(
-            content="{} :hand_splayed: You slapped {}.".format(
-                ctx.author.mention,
+        await ctx.send(
+            "You slapped {}.".format(
                 ", ".join([str(_) for _ in users]),
             )
         )
@@ -111,20 +110,15 @@ class Fun(
     )
     async def game(
         self,
-        ctx,
+        ctx: commands.Context,
     ):
         """Plays the game."""
         if random.random() > config["game"]["win-chance"]:
-            await ctx.reply(
-                content="{} :negative_squared_cross_mark: I lost the game. (https://en.wikipedia.org/wiki/The_Game_(mind_game))".format(
-                    ctx.author.mention
-                )
-            )
+            await ctx.send("I lost the game.")
         else:
-            await ctx.reply(
+            await ctx.send(
                 embed=discord.Embed(
                     title="xkcd: Anti-Mindvirus",
-                    description="I'm as surprised as you!  I didn't think it was possible.",
                     url="https://xkcd.com/391/",
                 ).set_image(
                     url="https://imgs.xkcd.com/comics/anti_mind_virus.png"
@@ -165,14 +159,14 @@ class Fun(
     )
     async def necro(
         self,
-        ctx,
+        ctx: commands.Context,
     ):
         pass
 
     @necro.command(name="rank")
     async def rank(
         self,
-        ctx,
+        ctx: commands.Context,
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
@@ -181,23 +175,18 @@ class Fun(
             posts,
         )
         if ctx.author in score:
-            await ctx.reply(
-                content="{} :stopwatch: You necroposted for {}.".format(
-                    ctx.author.mention,
+            await ctx.send(
+                "You necroposted for {}.".format(
                     str(score[ctx.author]),
                 )
             )
         else:
-            await ctx.reply(
-                content="{} :negative_squared_cross_mark: You don't seem to have valid posts!".format(
-                    ctx.author.mention
-                )
-            )
+            await ctx.send("You don't seem to have valid posts!")
 
     @necro.command(name="top")
     async def top(
         self,
-        ctx,
+        ctx: commands.Context,
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
@@ -205,9 +194,8 @@ class Fun(
             nec,
             posts,
         )
-        await ctx.reply(
-            content="{} :stadium: Here's the leaderboard you asked for:\n{}".format(
-                ctx.author.mention,
+        await ctx.send(
+            "Here's the leaderboard you asked for:\n{}".format(
                 "\n".join(
                     [
                         "{} - {}".format(

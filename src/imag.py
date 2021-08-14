@@ -24,7 +24,7 @@ class Imag(
         """Initialize the cog."""
         self.bot = bot
 
-    async def get_imag(
+    async def fetch(
         self,
         url,
     ):
@@ -46,11 +46,11 @@ class Imag(
     )
     async def human(
         self,
-        ctx,
+        ctx: commands.Context,
     ):
         """This Person Does Not Exist."""
-        await ctx.reply(
-            file=await self.get_imag("https://thispersondoesnotexist.com/image")
+        await ctx.send(
+            file=await self.fetch("https://thispersondoesnotexist.com/image")
         )
 
     @commands.command(
@@ -64,11 +64,11 @@ class Imag(
     )
     async def arts(
         self,
-        ctx,
+        ctx: commands.Context,
     ):
         """This Artwork Does Not Exist."""
-        await ctx.reply(
-            file=await self.get_imag("https://thisartworkdoesnotexist.com")
+        await ctx.send(
+            file=await self.fetch("https://thisartworkdoesnotexist.com")
         )
 
     @commands.command(
@@ -82,12 +82,10 @@ class Imag(
     )
     async def cats(
         self,
-        ctx,
+        ctx: commands.Context,
     ):
         """This Cat Does Not Exist."""
-        await ctx.reply(
-            file=await self.get_imag("https://thiscatdoesnotexist.com")
-        )
+        await ctx.send(file=await self.fetch("https://thiscatdoesnotexist.com"))
 
     @commands.command(
         name="horse",
@@ -100,11 +98,11 @@ class Imag(
     )
     async def horse(
         self,
-        ctx,
+        ctx: commands.Context,
     ):
         """This Horse Does Not Exist."""
-        await ctx.reply(
-            file=await self.get_imag("https://thishorsedoesnotexist.com")
+        await ctx.send(
+            file=await self.fetch("https://thishorsedoesnotexist.com")
         )
 
 

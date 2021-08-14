@@ -26,11 +26,13 @@ class Usr(
 
     @commands.command(name="send")
     @commands.is_owner()
-    async def send(self, ctx, tchannel: discord.TextChannel, *, msg: str):
+    async def send(
+        self, ctx: commands.Context, tchannel: discord.TextChannel, *, msg: str
+    ):
         """Send something."""
         await tchannel.send(msg)
-        await ctx.reply(
-            content="Sent {} to {}.".format(
+        await ctx.send(
+            "Sent {} to {}.".format(
                 msg,
                 tchannel.name,
             )
@@ -40,28 +42,32 @@ class Usr(
     @commands.is_owner()
     async def erase(
         self,
-        ctx,
+        ctx: commands.Context,
         msg: discord.Message,
         time: typing.Optional[float],
     ):
         """Delete a message."""
         await msg.delete(delay=time)
-        await ctx.reply(content="Deleted the message.")
+        await ctx.send("Deleted the message.")
 
     @commands.command(name="edit")
     @commands.is_owner()
-    async def edit(self, ctx, msg: discord.Message, *, text: str):
+    async def edit(
+        self, ctx: commands.Context, msg: discord.Message, *, text: str
+    ):
         """Delete a message."""
-        await msg.edit(content=text)
-        await ctx.reply(content="Edited the message to {}.".format(text))
+        await msg.edit(text)
+        await ctx.send("Edited the message to {}.".format(text))
 
     @commands.command(name="reply")
     @commands.is_owner()
-    async def reply(self, ctx, msg: discord.Message, *, text: str):
+    async def reply(
+        self, ctx: commands.Context, msg: discord.Message, *, text: str
+    ):
         """Reply to a message."""
         await msg.reply(text)
-        await ctx.reply(
-            content="Replied {} to {}.".format(
+        await ctx.send(
+            "Replied {} to {}.".format(
                 text,
                 msg.content,
             )
