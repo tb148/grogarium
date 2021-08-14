@@ -20,14 +20,14 @@ class Tbgs(
 
     def __init__(
         self,
-        bot,
+        bot: commands.AutoShardedBot,
     ):
         """Initialize the cog."""
-        self.bot = bot
-        self.msg = ""
-        self.url = "https://tbgforums.com/forums/"
-        self.tbgs = requests.Session()
-        form = {"form_sent": "1"}
+        self.bot: commands.AutoShardedBot = bot
+        self.msg: str = ""
+        self.url: str = "https://tbgforums.com/forums/"
+        self.tbgs: requests.Session = requests.Session()
+        form: dict = {"form_sent": "1"}
         form["req_username"] = os.getenv("TBGS_USERNAME")
         form["req_password"] = os.getenv("TBGS_PASSWORD")
         form["login"] = "Login"
@@ -75,7 +75,7 @@ class Tbgs(
         self,
     ):
         """Sync messages with TBGForums."""
-        form = {"form_sent": "1"}
+        form: dict = {"form_sent": "1"}
         form["req_message"] = self.msg
         self.tbgs.post(
             self.url + "post.php?tid=" + os.getenv("TBGS_TOPICTID"),
@@ -85,14 +85,14 @@ class Tbgs(
 
 
 def setup(
-    bot,
+    bot: commands.AutoShardedBot,
 ):
     """Add the cog to the bot."""
     bot.add_cog(Tbgs(bot))
 
 
 def teardown(
-    bot,
+    bot: commands.AutoShardedBot,
 ):
     """Remove the cog from the bot."""
     bot.remove_cog(config["tbgs"]["name"])

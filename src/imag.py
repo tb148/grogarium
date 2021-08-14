@@ -19,14 +19,14 @@ class Imag(
 
     def __init__(
         self,
-        bot,
+        bot: commands.AutoShardedBot,
     ):
         """Initialize the cog."""
         self.bot = bot
 
-    async def fetch(
+    async def get(
         self,
-        url,
+        url: str,
     ):
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as resp:
@@ -50,7 +50,7 @@ class Imag(
     ):
         """This Person Does Not Exist."""
         await ctx.send(
-            file=await self.fetch("https://thispersondoesnotexist.com/image")
+            file=await self.get("https://thispersondoesnotexist.com/image")
         )
 
     @commands.command(
@@ -68,7 +68,7 @@ class Imag(
     ):
         """This Artwork Does Not Exist."""
         await ctx.send(
-            file=await self.fetch("https://thisartworkdoesnotexist.com")
+            file=await self.get("https://thisartworkdoesnotexist.com")
         )
 
     @commands.command(
@@ -85,7 +85,7 @@ class Imag(
         ctx: commands.Context,
     ):
         """This Cat Does Not Exist."""
-        await ctx.send(file=await self.fetch("https://thiscatdoesnotexist.com"))
+        await ctx.send(file=await self.get("https://thiscatdoesnotexist.com"))
 
     @commands.command(
         name="horse",
@@ -101,20 +101,18 @@ class Imag(
         ctx: commands.Context,
     ):
         """This Horse Does Not Exist."""
-        await ctx.send(
-            file=await self.fetch("https://thishorsedoesnotexist.com")
-        )
+        await ctx.send(file=await self.get("https://thishorsedoesnotexist.com"))
 
 
 def setup(
-    bot,
+    bot: commands.AutoShardedBot,
 ):
     """Add the cog to the bot."""
     bot.add_cog(Imag(bot))
 
 
 def teardown(
-    bot,
+    bot: commands.AutoShardedBot,
 ):
     """Remove the cog from the bot."""
     bot.remove_cog(config["imag"]["name"])

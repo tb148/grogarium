@@ -11,9 +11,9 @@ from discord.ext import (
     tasks,
 )
 
-config = toml.load("config.toml")
+config: dict = toml.load("config.toml")
 
-parser = argparse.ArgumentParser()
+parser: argparse.ArgumentParser = argparse.ArgumentParser()
 parser.add_argument(
     "-t",
     "--token",
@@ -34,7 +34,7 @@ parser.add_argument(
     default="grogar.log",
     help="The file to write logs to.",
 )
-arg = parser.parse_args()
+arg: argparse.Namespace = parser.parse_args()
 (token, verbosity, logfile,) = (
     arg.token,
     arg.verbose,
@@ -44,7 +44,7 @@ logging.basicConfig(
     level=40 - 10 * verbosity,
     filename=logfile,
 )
-bot = commands.AutoShardedBot(
+bot: commands.AutoShardedBot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or("Gr!"),
     case_insensitive=config["case-insensitive"],
     description=config["description"],
@@ -94,7 +94,7 @@ async def roll(
             random.choice(config["roll"]["warnings"]["one-faced"]),
         )
         return
-    dice = [
+    dice: list = [
         random.randint(
             1,
             _,
@@ -164,7 +164,7 @@ async def status():
     )
 
 
-@bot.event
+@bot.listen("on_ready")
 async def on_ready():
     """Tell the owner that the bot is ready."""
     for filename in os.listdir("./src"):
@@ -174,7 +174,7 @@ async def on_ready():
     status.start()
 
 
-@bot.event
+@bot.listen("on_command_error")
 async def on_command_error(
     ctx: commands.Context,
     error,

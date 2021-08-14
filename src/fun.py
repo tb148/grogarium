@@ -24,7 +24,7 @@ class Fun(
 
     def __init__(
         self,
-        bot,
+        bot: commands.AutoShardedBot,
     ):
         """Initialize the cog."""
         self.bot = bot
@@ -170,7 +170,7 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        score = await self.get_necro(
+        score: dict = await self.get_necro(
             nec,
             posts,
         )
@@ -190,7 +190,7 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        score = await self.get_necro(
+        score: dict = await self.get_necro(
             nec,
             posts,
         )
@@ -214,14 +214,14 @@ class Fun(
 
 
 def setup(
-    bot,
+    bot: commands.AutoShardedBot,
 ):
     """Add the cog to the bot."""
     bot.add_cog(Fun(bot))
 
 
 def teardown(
-    bot,
+    bot: commands.AutoShardedBot,
 ):
     """Remove the cog from the bot."""
     bot.remove_cog(config["fun"]["name"])
