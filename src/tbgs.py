@@ -42,6 +42,28 @@ class Tbgs(
     ):
         self.autosync.cancel()
 
+    def encode(
+        self,
+        char: str,
+    ):
+        (high, low,) = divmod(
+            ord(char) - 0x10000,
+            0x1000,
+        )
+        return chr(high + 0xE000) + chr(low + 0xE000)
+
+    def convert(
+        self,
+        src: str,
+    ):
+        res = ""
+        for char in src:
+            if ord(char) >= 0x10000:
+                res += self.encode(char)
+            else:
+                res += char
+        return res
+
     @commands.command(
         name="sync",
         enabled=config["sync"]["enabled"],
@@ -62,7 +84,7 @@ class Tbgs(
             return
         self.msg += "[quote={}]{}[/quote]".format(
             str(msg.author),
-            msg.content,
+            self.convert(msg.content),
         )
         await ctx.send(
             "Message {} added to queue.".format(
