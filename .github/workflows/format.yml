@@ -13,10 +13,10 @@ jobs:
       - name: Install Prettier
         run: npm install --global prettier prettier-plugin-toml
       - name: Check format
-        run: npx prettier --check .
+        run: prettier --check .
       - name: Format code
         if: failure()
-        run: npx prettier --write .
+        run: prettier --write .
       - name: Commit changed files
         if: failure()
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -32,10 +32,10 @@ jobs:
       - name: Install black
         run: pip install black
       - name: Check format
-        run: black --check .
+        run: black --check -l 80 .
       - name: Format code
         if: failure()
-        run: black .
+        run: black -l 0 . && black -l 80 .
       - name: Commit changed files
         if: failure()
         uses: stefanzweifel/git-auto-commit-action@v4
