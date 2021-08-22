@@ -62,9 +62,7 @@ class Util(
         usage=config["trans"]["usage"],
         aliases=config["trans"]["aliases"],
     )
-    async def trans(
-        self, ctx: commands.Context, src: str, dest: str, *, text: str
-    ):
+    async def trans(self, ctx: commands.Context, src: str, dest: str, *, text: str):
         """Translate a word or sentence to another language."""
         await ctx.send(
             translator.translate(
