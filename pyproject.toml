@@ -29,7 +29,7 @@ version = "0.3.0"
 [tool.poetry.dependencies]
 googletrans = "^3.0.0"
 python = "^3.8"
-sympy = "^1.6.2"
+sympy = "^1.8"
 toml = "^0.10.2"
 chess = "^1.6.1"
 google-trans-new = "^1.1.9"
