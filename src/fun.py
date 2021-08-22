@@ -39,7 +39,13 @@ class Fun(
         aliases=config["badgt"]["aliases"],
     )
     async def badgt(
-        self, ctx: commands.Context, src: str, count: int, dest: str, *, text: str
+        self,
+        ctx: commands.Context,
+        src: str,
+        count: int,
+        dest: str,
+        *,
+        text: str
     ):
         """Badly translate a word or sentence to another language."""
         if count > config["badgt"]["limit"]:
@@ -114,7 +120,9 @@ class Fun(
                 embed=discord.Embed(
                     title="xkcd: Anti-Mindvirus",
                     url="https://xkcd.com/391/",
-                ).set_image(url="https://imgs.xkcd.com/comics/anti_mind_virus.png")
+                ).set_image(
+                    url="https://imgs.xkcd.com/comics/anti_mind_virus.png"
+                )
             )
 
     async def get_necro(
