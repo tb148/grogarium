@@ -1,0 +1,14 @@
+pull_request_rules:
+  - name: Automatic merge on approval and check success
+    conditions:
+      - "#approved-reviews-by>=1"
+      - check-success=Semantic Pull Request
+      - check-success=Codacy Static Code Analysis
+    actions:
+      merge:
+        method: merge
+  - name: Delete head branch after merge
+    conditions:
+      - merged
+    actions:
+      delete_head_branch: {}
