@@ -39,7 +39,7 @@ requests = "^2.26.0"
 [tool.poetry.dev-dependencies]
 coverage = "^5.3"
 docutils = "^0.17"
-dpytest = "^0.0.22"
+dpytest = "^0.5.3"
 sphinx = "^4.1.2"
 poetry = "^1.1.8"
 dephell = "^0.8.3"
