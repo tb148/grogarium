@@ -52,18 +52,14 @@ class Usr(
 
     @commands.command(name="edit")
     @commands.is_owner()
-    async def edit(
-        self, ctx: commands.Context, msg: discord.Message, *, text: str
-    ):
+    async def edit(self, ctx: commands.Context, msg: discord.Message, *, text: str):
         """Delete a message."""
         await msg.edit(text)
         await ctx.send("Edited the message to {}.".format(text))
 
     @commands.command(name="reply")
     @commands.is_owner()
-    async def reply(
-        self, ctx: commands.Context, msg: discord.Message, *, text: str
-    ):
+    async def reply(self, ctx: commands.Context, msg: discord.Message, *, text: str):
         """Reply to a message."""
         await msg.reply(text)
         await ctx.send(
