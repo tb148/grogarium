@@ -48,7 +48,6 @@ class Tbgs(
     ):
         res = ""
         pre = 0
-
         for c in src:
             if 0xE000 <= ord(c) < 0xF800 or ord(c) >= 0x10000:
                 hi, lo = divmod(ord(c), 0x1000)
@@ -58,6 +57,7 @@ class Tbgs(
                 pre = hi
             else:
                 res += c
+        return res
 
     @commands.command(
         name="sync",
