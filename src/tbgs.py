@@ -42,27 +42,22 @@ class Tbgs(
     ):
         self.autosync.cancel()
 
-    def encode(
-        self,
-        char: str,
-    ):
-        (high, low,) = divmod(
-            ord(char) - 0x10000,
-            0x1000,
-        )
-        return chr(high + 0xE000) + chr(low + 0xE000)
-
     def convert(
         self,
         src: str,
     ):
         res = ""
-        for char in src:
-            if ord(char) >= 0x10000:
-                res += self.encode(char)
+        pre = 0
+
+        for c in src:
+            if 0xE000 <= ord(c) < 0xF800 or ord(c) >= 0x10000:
+                hi, lo = divmod(ord(c), 0x1000)
+                if hi != pre:
+                    res += chr(hi + 0xF000)
+                res += chr(lo + 0xE000)
+                pre = hi
             else:
-                res += char
-        return res
+                res += c
 
     @commands.command(
         name="sync",
