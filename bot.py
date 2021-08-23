@@ -159,7 +159,9 @@ async def ping(
 @tasks.loop(seconds=config["stat-freq"])
 async def status():
     """Change the status of the bot."""
-    await bot.change_presence(activity=discord.Game(random.choice(config["status"])))
+    await bot.change_presence(
+        activity=discord.Game(random.choice(config["status"]))
+    )
 
 
 @bot.listen("on_ready")

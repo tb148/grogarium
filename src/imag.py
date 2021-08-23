@@ -49,7 +49,9 @@ class Imag(
         ctx: commands.Context,
     ):
         """This Person Does Not Exist."""
-        await ctx.send(file=await self.get("https://thispersondoesnotexist.com/image"))
+        await ctx.send(
+            file=await self.get("https://thispersondoesnotexist.com/image")
+        )
 
     @commands.command(
         name="arts",
@@ -65,7 +67,9 @@ class Imag(
         ctx: commands.Context,
     ):
         """This Artwork Does Not Exist."""
-        await ctx.send(file=await self.get("https://thisartworkdoesnotexist.com"))
+        await ctx.send(
+            file=await self.get("https://thisartworkdoesnotexist.com")
+        )
 
     @commands.command(
         name="cats",
