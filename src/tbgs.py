@@ -26,6 +26,15 @@ class Tbgs(
         self.bot: commands.AutoShardedBot = bot
         self.msg: str = ""
         self.url: str = "https://tbgforums.com/forums/"
+        self.tbgs: requests.Session = requests.Session()
+        form: dict = {"form_sent": "1"}
+        form["req_username"] = os.getenv("TBGS_USERNAME")
+        form["req_password"] = os.getenv("TBGS_PASSWORD")
+        form["login"] = "Login"
+        self.tbgs.post(
+            self.url + "login.php?action=in",
+            data=form,
+        )
         self.autosync.start()
 
     def cog_unload(
@@ -40,12 +49,12 @@ class Tbgs(
         res = ""
         pre = 0
         for c in src:
-            if 0xE000 <= ord(c) < 0xF800 or ord(c) >= 0x10000:
+            if 0xE000 <= ord(c) < 0xF900 or ord(c) >= 0x10000:
                 hi, lo = divmod(ord(c), 0x1000)
                 if hi != pre:
                     res += chr(hi + 0xF000)
+                    pre = hi
                 res += chr(lo + 0xE000)
-                pre = hi
             else:
                 res += c
         return res
@@ -86,22 +95,13 @@ class Tbgs(
         self,
     ):
         """Sync messages with TBGForums."""
-        with requests.Session() as tbgs:
-            form: dict = {"form_sent": "1"}
-            form["req_username"] = os.getenv("TBGS_USERNAME")
-            form["req_password"] = os.getenv("TBGS_PASSWORD")
-            form["login"] = "Login"
-            tbgs.post(
-                self.url + "login.php?action=in",
-                data=form,
-            )
-            form: dict = {"form_sent": "1"}
-            form["req_message"] = self.msg
-            tbgs.post(
-                self.url + "post.php?tid=" + os.getenv("TBGS_TOPICTID"),
-                data=form,
-            )
-            self.msg = ""
+        form: dict = {"form_sent": "1"}
+        form["req_message"] = self.msg
+        self.tbgs.post(
+            self.url + "post.php?tid=" + os.getenv("TBGS_TOPICTID"),
+            data=form,
+        )
+        self.msg = ""
 
 
 def setup(
