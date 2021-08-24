@@ -45,7 +45,7 @@ logging.basicConfig(
     filename=logfile,
 )
 bot: commands.AutoShardedBot = commands.AutoShardedBot(
-    command_prefix=commands.when_mentioned_or("Gr!"),
+    command_prefix=commands.when_mentioned_or(*config["prefixes"]),
     case_insensitive=config["case-insensitive"],
     description=config["description"],
     owner_ids=config["owners"],

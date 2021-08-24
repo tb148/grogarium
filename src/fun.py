@@ -150,6 +150,7 @@ class Fun(
 
     @commands.group(
         name="necro",
+        case_insensitive=config["case-insensitive"],
         enabled=config["necro"]["enabled"],
         hidden=config["necro"]["hidden"],
         help=config["necro"]["help"],
