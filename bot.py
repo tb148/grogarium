@@ -175,8 +175,7 @@ async def on_command_error(
 ):
     """Tell the user that an error occured."""
     await ctx.channel.send(
-        "{} {}\n```{}```".format(
-            ctx.author.mention,
+        "{}\n```{}```".format(
             random.choice(config["error"]),
             error,
         )
