@@ -119,14 +119,13 @@ class Fun(
 
     async def get_necro(
         self,
+        ctx: commands.Context,
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        async with nec.typing():
-            (prev, score,) = (
-                None,
-                dict(),
-            )
+        async with ctx.typing():
+            prev = None
+            score = dict()
             if posts <= 0:
                 hist = await nec.history(limit=None).flatten()
             else:
@@ -163,6 +162,7 @@ class Fun(
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
         score: dict = await self.get_necro(
+            ctx,
             nec,
             posts,
         )
@@ -183,6 +183,7 @@ class Fun(
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
         score: dict = await self.get_necro(
+            ctx,
             nec,
             posts,
         )
