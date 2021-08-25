@@ -5,7 +5,6 @@ dephell==0.*,>=0.8.3
 discord.py==1.*,>=1.5.1
 docutils==0.*,>=0.17.0
 dpytest==0.*,>=0.5.3
-google-trans-new==1.*,>=1.1.9
 googletrans==4.*,>=4.0.0.rc1
 jedi==0.*,>=0.18.0
 poetry==1.*,>=1.1.8
