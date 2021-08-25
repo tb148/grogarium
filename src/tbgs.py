@@ -41,7 +41,10 @@ class Tbgs(
         pre = 0
         for c in src:
             if 0xE000 <= ord(c) < 0xF900 or ord(c) >= 0x10000:
-                hi, lo = divmod(ord(c), 0x1000)
+                (hi, lo,) = divmod(
+                    ord(c),
+                    0x1000,
+                )
                 if hi != pre:
                     res += chr(hi + 0xF000)
                     pre = hi

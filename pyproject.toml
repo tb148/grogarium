@@ -27,7 +27,7 @@ repository = "https://github.com/tb148/grogarium/"
 version = "0.3.0"
 
 [tool.poetry.dependencies]
-googletrans = "^3.0.0"
+googletrans = "^4.0.0rc1"
 python = "^3.8"
 sympy = "^1.8"
 toml = "^0.10.2"

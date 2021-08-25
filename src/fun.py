@@ -2,7 +2,6 @@
 import typing
 import datetime
 import googletrans
-import google_trans_new
 import operator
 import random
 import toml
@@ -12,7 +11,7 @@ from discord.ext import (
 )
 
 config = toml.load("config.toml")
-translator = google_trans_new.google_translator()
+translator = googletrans.Translator()
 
 
 class Fun(
@@ -51,25 +50,23 @@ class Fun(
         if count > config["badgt"]["limit"]:
             await ctx.send(random.choice(config["badgt"]["warnings"]))
             return
-        (prev, result,) = (
-            src,
-            text,
-        )
+        prev: str = src
+        result: str = text
         for lang in random.choices(
             googletrans.LANGUAGES,
             k=count,
         ):
             result = translator.translate(
                 result,
-                lang_tgt=lang,
-                lang_src=prev,
+                dest=lang,
+                src=prev,
             )
             prev = lang
         await ctx.send(
             translator.translate(
                 result,
-                lang_tgt=dest,
-                lang_src=prev,
+                dest=dest,
+                src=prev,
             )
         )
 

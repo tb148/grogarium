@@ -1,6 +1,5 @@
 """Utilities that are not designed for fun."""
 import googletrans
-import google_trans_new
 import sympy
 import toml
 from discord.ext import (
@@ -8,7 +7,7 @@ from discord.ext import (
 )
 
 config = toml.load("config.toml")
-translator = google_trans_new.google_translator()
+translator = googletrans.Translator()
 
 
 class Util(
@@ -69,8 +68,8 @@ class Util(
         await ctx.send(
             translator.translate(
                 text,
-                lang_tgt=dest,
-                lang_src=src,
+                dest=dest,
+                src=src,
             )
         )
 
