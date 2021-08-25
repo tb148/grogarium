@@ -52,7 +52,7 @@ class Fun(
         result: str = text
         async with ctx.typing():
             for lang in random.choices(
-                list(googletrans.LANGUAGES.keys),
+                list(googletrans.LANGUAGES.keys()),
                 k=count,
             ):
                 result = translator.translate(
