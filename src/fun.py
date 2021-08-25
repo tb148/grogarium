@@ -155,13 +155,7 @@ class Fun(
     ):
         pass
 
-    @necro.command(
-        name="rank",
-        enabled=config["necro"]["enabled"],
-        hidden=config["necro"]["hidden"],
-        help=config["necro"]["help"],
-        aliases=config["necro"]["aliases"],
-    )
+    @necro.command(name="rank")
     async def rank(
         self,
         ctx: commands.Context,
@@ -181,13 +175,7 @@ class Fun(
         else:
             await ctx.send("You don't seem to have valid posts!")
 
-    @necro.command(
-        name="top",
-        enabled=config["necro"]["enabled"],
-        hidden=config["necro"]["hidden"],
-        help=config["necro"]["help"],
-        aliases=config["necro"]["aliases"],
-    )
+    @necro.command(name="top")
     async def top(
         self,
         ctx: commands.Context,

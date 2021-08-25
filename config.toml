@@ -36,7 +36,6 @@ error = [
     "What are you expecting for me to do?",
     "Wait what? Are you serious?",
     "Are you sure that this is exactly what you mean?",
-    "Are you ",
 ]
 owners = [728198677050425424]
 logfile = "grogar.log"
