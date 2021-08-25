@@ -33,7 +33,7 @@ status = [
 stat-freq = 10.0
 error = [
     "What am I expected to do then?",
-    "What are you expecting for me to do?",
+    "What are you expecting me to do?",
     "Wait what? Are you serious?",
     "Are you sure that this is exactly what you mean?",
 ]
