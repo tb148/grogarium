@@ -133,6 +133,11 @@ enabled = true
 hidden = false
 help = "Translates something badly"
 aliases = ["badtranslate", "bgt", "bt"]
+limit = 10000
+warning = [
+    "Are you testing my functionalities or what?",
+    "Don't test me anymore! I am stable!",
+]
 
 [slap]
 enabled = true
@@ -154,6 +159,11 @@ help = "Plays thread necromancy"
 aliases = ["necromancy", "necropost"]
 posts = 500
 bot = false
+limit = 10000
+warning = [
+    "Are you testing my functionalities or what?",
+    "Don't test me anymore! I am stable!",
+]
 
 [imag]
 name = "Imaginary Image"

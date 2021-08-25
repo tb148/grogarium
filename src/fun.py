@@ -161,6 +161,9 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
+        if posts > config["badgt"]["limit"]:
+            await ctx.send(random.choice(config["badgt"]["warnings"]))
+            return
         score: dict = await self.get_necro(
             ctx,
             nec,
@@ -182,6 +185,9 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
+        if posts > config["badgt"]["limit"]:
+            await ctx.send(random.choice(config["badgt"]["warnings"]))
+            return
         score: dict = await self.get_necro(
             ctx,
             nec,
