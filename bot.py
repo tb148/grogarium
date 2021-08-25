@@ -58,7 +58,6 @@ bot: commands.AutoShardedBot = commands.AutoShardedBot(
     hidden=config["roll"]["hidden"],
     help=config["roll"]["help"],
     brief=config["roll"]["brief"],
-    usage=config["roll"]["usage"],
     aliases=config["roll"]["aliases"],
 )
 async def roll(
@@ -115,7 +114,6 @@ async def roll(
     hidden=config["8ball"]["hidden"],
     help=config["8ball"]["help"],
     brief=config["8ball"]["brief"],
-    usage=config["8ball"]["usage"],
     aliases=config["8ball"]["aliases"],
 )
 async def eight_ball(ctx: commands.Context, *, question: str):
@@ -131,7 +129,6 @@ async def eight_ball(ctx: commands.Context, *, question: str):
     hidden=config["ping"]["hidden"],
     help=config["ping"]["help"],
     brief=config["ping"]["brief"],
-    usage=config["ping"]["usage"],
     aliases=config["ping"]["aliases"],
 )
 async def ping(

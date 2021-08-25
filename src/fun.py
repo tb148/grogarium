@@ -34,7 +34,6 @@ class Fun(
         hidden=config["badgt"]["hidden"],
         help=config["badgt"]["help"],
         brief=config["badgt"]["brief"],
-        usage=config["badgt"]["usage"],
         aliases=config["badgt"]["aliases"],
     )
     async def badgt(
@@ -52,22 +51,23 @@ class Fun(
             return
         prev: str = src
         result: str = text
-        for lang in random.choices(
-            googletrans.LANGUAGES,
-            k=count,
-        ):
-            result = translator.translate(
-                result,
-                dest=lang,
-                src=prev,
-            )
-            prev = lang
+        async with ctx.typing():
+            for lang in random.choices(
+                googletrans.LANGUAGES,
+                k=count,
+            ):
+                result = translator.translate(
+                    result,
+                    dest=lang,
+                    src=prev,
+                ).text
+                prev = lang
         await ctx.send(
             translator.translate(
                 result,
                 dest=dest,
                 src=prev,
-            )
+            ).text
         )
 
     @commands.command(
@@ -76,7 +76,6 @@ class Fun(
         hidden=config["slap"]["hidden"],
         help=config["slap"]["help"],
         brief=config["slap"]["brief"],
-        usage=config["slap"]["usage"],
         aliases=config["slap"]["aliases"],
     )
     async def slap(
@@ -102,7 +101,6 @@ class Fun(
         hidden=config["game"]["hidden"],
         help=config["game"]["help"],
         brief=config["game"]["brief"],
-        usage=config["game"]["usage"],
         aliases=config["game"]["aliases"],
     )
     async def game(
@@ -127,33 +125,28 @@ class Fun(
         nec: discord.TextChannel,
         posts: typing.Optional[int] = config["necro"]["posts"],
     ):
-        (prev, score,) = (
-            None,
-            dict(),
-        )
-        if posts <= 0:
-            hist = await nec.history(limit=None).flatten()
-        else:
-            hist = await nec.history(limit=posts).flatten()
-        for post in hist:
-            if post.author.bot and not config["necro"]["bot"]:
-                continue
-            if prev:
-                if prev.author not in score:
-                    score[prev.author] = datetime.timedelta()
-                score[prev.author] += prev.created_at - post.created_at
-            prev = post
+        async with nec.typing():
+            (prev, score,) = (
+                None,
+                dict(),
+            )
+            if posts <= 0:
+                hist = await nec.history(limit=None).flatten()
+            else:
+                hist = await nec.history(limit=posts).flatten()
+            for post in hist:
+                if post.author.bot and not config["necro"]["bot"]:
+                    continue
+                if prev:
+                    if prev.author not in score:
+                        score[prev.author] = datetime.timedelta()
+                    score[prev.author] += prev.created_at - post.created_at
+                prev = post
         return score
 
     @commands.group(
         name="necro",
         case_insensitive=config["case-insensitive"],
-        enabled=config["necro"]["enabled"],
-        hidden=config["necro"]["hidden"],
-        help=config["necro"]["help"],
-        brief=config["necro"]["brief"],
-        usage=config["necro"]["usage"],
-        aliases=config["necro"]["aliases"],
     )
     async def necro(
         self,
@@ -161,7 +154,14 @@ class Fun(
     ):
         pass
 
-    @necro.command(name="rank")
+    @necro.command(
+        name="rank",
+        enabled=config["necro"]["enabled"],
+        hidden=config["necro"]["hidden"],
+        help=config["necro"]["help"],
+        brief=config["necro"]["brief"],
+        aliases=config["necro"]["aliases"],
+    )
     async def rank(
         self,
         ctx: commands.Context,
@@ -181,7 +181,14 @@ class Fun(
         else:
             await ctx.send("You don't seem to have valid posts!")
 
-    @necro.command(name="top")
+    @necro.command(
+        name="top",
+        enabled=config["necro"]["enabled"],
+        hidden=config["necro"]["hidden"],
+        help=config["necro"]["help"],
+        brief=config["necro"]["brief"],
+        aliases=config["necro"]["aliases"],
+    )
     async def top(
         self,
         ctx: commands.Context,

@@ -30,7 +30,6 @@ class Util(
         hidden=config["calc"]["hidden"],
         help=config["calc"]["help"],
         brief=config["calc"]["brief"],
-        usage=config["calc"]["usage"],
         aliases=config["calc"]["aliases"],
     )
     async def calc(self, ctx: commands.Context, *, expression: str):
@@ -58,7 +57,6 @@ class Util(
         hidden=config["trans"]["hidden"],
         help=config["trans"]["help"],
         brief=config["trans"]["brief"],
-        usage=config["trans"]["usage"],
         aliases=config["trans"]["aliases"],
     )
     async def trans(
@@ -70,7 +68,7 @@ class Util(
                 text,
                 dest=dest,
                 src=src,
-            )
+            ).text
         )
 
     @commands.command(
@@ -79,7 +77,6 @@ class Util(
         hidden=config["langs"]["hidden"],
         help=config["langs"]["help"],
         brief=config["langs"]["brief"],
-        usage=config["langs"]["usage"],
         aliases=config["langs"]["aliases"],
     )
     async def langs(
