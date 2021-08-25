@@ -40,7 +40,6 @@ class Imag(
         enabled=config["human"]["enabled"],
         hidden=config["human"]["hidden"],
         help=config["human"]["help"],
-        brief=config["human"]["brief"],
         aliases=config["human"]["aliases"],
     )
     async def human(
@@ -57,7 +56,6 @@ class Imag(
         enabled=config["arts"]["enabled"],
         hidden=config["arts"]["hidden"],
         help=config["arts"]["help"],
-        brief=config["arts"]["brief"],
         aliases=config["arts"]["aliases"],
     )
     async def arts(
@@ -74,7 +72,6 @@ class Imag(
         enabled=config["cats"]["enabled"],
         hidden=config["cats"]["hidden"],
         help=config["cats"]["help"],
-        brief=config["cats"]["brief"],
         aliases=config["cats"]["aliases"],
     )
     async def cats(
@@ -89,7 +86,6 @@ class Imag(
         enabled=config["horse"]["enabled"],
         hidden=config["horse"]["hidden"],
         help=config["horse"]["help"],
-        brief=config["horse"]["brief"],
         aliases=config["horse"]["aliases"],
     )
     async def horse(

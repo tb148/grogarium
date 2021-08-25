@@ -33,7 +33,6 @@ class Fun(
         enabled=config["badgt"]["enabled"],
         hidden=config["badgt"]["hidden"],
         help=config["badgt"]["help"],
-        brief=config["badgt"]["brief"],
         aliases=config["badgt"]["aliases"],
     )
     async def badgt(
@@ -75,7 +74,6 @@ class Fun(
         enabled=config["slap"]["enabled"],
         hidden=config["slap"]["hidden"],
         help=config["slap"]["help"],
-        brief=config["slap"]["brief"],
         aliases=config["slap"]["aliases"],
     )
     async def slap(
@@ -100,7 +98,6 @@ class Fun(
         enabled=config["game"]["enabled"],
         hidden=config["game"]["hidden"],
         help=config["game"]["help"],
-        brief=config["game"]["brief"],
         aliases=config["game"]["aliases"],
     )
     async def game(
@@ -147,6 +144,10 @@ class Fun(
     @commands.group(
         name="necro",
         case_insensitive=config["case-insensitive"],
+        enabled=config["necro"]["enabled"],
+        hidden=config["necro"]["hidden"],
+        help=config["necro"]["help"],
+        aliases=config["necro"]["aliases"],
     )
     async def necro(
         self,
@@ -159,7 +160,6 @@ class Fun(
         enabled=config["necro"]["enabled"],
         hidden=config["necro"]["hidden"],
         help=config["necro"]["help"],
-        brief=config["necro"]["brief"],
         aliases=config["necro"]["aliases"],
     )
     async def rank(
@@ -186,7 +186,6 @@ class Fun(
         enabled=config["necro"]["enabled"],
         hidden=config["necro"]["hidden"],
         help=config["necro"]["help"],
-        brief=config["necro"]["brief"],
         aliases=config["necro"]["aliases"],
     )
     async def top(

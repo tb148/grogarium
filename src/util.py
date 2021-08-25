@@ -29,7 +29,6 @@ class Util(
         enabled=config["calc"]["enabled"],
         hidden=config["calc"]["hidden"],
         help=config["calc"]["help"],
-        brief=config["calc"]["brief"],
         aliases=config["calc"]["aliases"],
     )
     async def calc(self, ctx: commands.Context, *, expression: str):
@@ -56,7 +55,6 @@ class Util(
         enabled=config["trans"]["enabled"],
         hidden=config["trans"]["hidden"],
         help=config["trans"]["help"],
-        brief=config["trans"]["brief"],
         aliases=config["trans"]["aliases"],
     )
     async def trans(
@@ -76,7 +74,6 @@ class Util(
         enabled=config["langs"]["enabled"],
         hidden=config["langs"]["hidden"],
         help=config["langs"]["help"],
-        brief=config["langs"]["brief"],
         aliases=config["langs"]["aliases"],
     )
     async def langs(

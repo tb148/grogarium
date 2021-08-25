@@ -58,7 +58,6 @@ class Tbgs(
         enabled=config["sync"]["enabled"],
         hidden=config["sync"]["hidden"],
         help=config["sync"]["help"],
-        brief=config["sync"]["brief"],
         aliases=config["sync"]["aliases"],
     )
     async def sync(
