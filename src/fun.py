@@ -52,7 +52,7 @@ class Fun(
         result: str = text
         async with ctx.typing():
             for lang in random.choices(
-                googletrans.LANGUAGES,
+                list(googletrans.LANGUAGES.keys),
                 k=count,
             ):
                 result = translator.translate(
@@ -126,10 +126,7 @@ class Fun(
         async with ctx.typing():
             prev = None
             score = dict()
-            if posts <= 0:
-                hist = await nec.history(limit=None).flatten()
-            else:
-                hist = await nec.history(limit=posts).flatten()
+            hist = await nec.history(limit=posts).flatten()
             for post in hist:
                 if post.author.bot and not config["necro"]["bot"]:
                     continue
