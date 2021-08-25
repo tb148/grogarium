@@ -112,11 +112,6 @@ enabled = true
 hidden = false
 help = "Translates something"
 aliases = ["translate", "gt"]
-limit = 50
-warnings = [
-    "Are you testing my functionalities or what?",
-    "Don't test me anymore! I am stable!",
-]
 
 [langs]
 enabled = true
@@ -133,8 +128,8 @@ enabled = true
 hidden = false
 help = "Translates something badly"
 aliases = ["badtranslate", "bgt", "bt"]
-limit = 10000
-warning = [
+limit = 25
+warnings = [
     "Are you testing my functionalities or what?",
     "Don't test me anymore! I am stable!",
 ]
