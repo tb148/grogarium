@@ -61,13 +61,13 @@ class Fun(
                     src=prev,
                 ).text
                 prev = lang
-        await ctx.send(
-            translator.translate(
-                result,
-                dest=dest,
-                src=prev,
-            ).text
-        )
+            await ctx.send(
+                translator.translate(
+                    result,
+                    dest=dest,
+                    src=prev,
+                ).text
+            )
 
     @commands.command(
         name="slap",
