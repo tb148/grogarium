@@ -20,10 +20,10 @@ class Tbgs(
 
     def __init__(
         self,
-        bot: commands.AutoShardedBot,
+        bot: commands.Bot,
     ):
         """Initialize the cog."""
-        self.bot: commands.AutoShardedBot = bot
+        self.bot: commands.Bot = bot
         self.msg: str = ""
         self.url: str = "https://tbgforums.com/forums/"
         self.autosync.start()
@@ -107,14 +107,14 @@ class Tbgs(
 
 
 def setup(
-    bot: commands.AutoShardedBot,
+    bot: commands.Bot,
 ):
     """Add the cog to the bot."""
     bot.add_cog(Tbgs(bot))
 
 
 def teardown(
-    bot: commands.AutoShardedBot,
+    bot: commands.Bot,
 ):
     """Remove the cog from the bot."""
     bot.remove_cog(config["tbgs"]["name"])

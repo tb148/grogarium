@@ -23,7 +23,7 @@ class Fun(
 
     def __init__(
         self,
-        bot: commands.AutoShardedBot,
+        bot: commands.Bot,
     ):
         """Initialize the cog."""
         self.bot = bot
@@ -210,14 +210,14 @@ class Fun(
 
 
 def setup(
-    bot: commands.AutoShardedBot,
+    bot: commands.Bot,
 ):
     """Add the cog to the bot."""
     bot.add_cog(Fun(bot))
 
 
 def teardown(
-    bot: commands.AutoShardedBot,
+    bot: commands.Bot,
 ):
     """Remove the cog from the bot."""
     bot.remove_cog(config["fun"]["name"])

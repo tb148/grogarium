@@ -44,7 +44,7 @@ logging.basicConfig(
     level=40 - 10 * verbosity,
     filename=logfile,
 )
-bot: commands.AutoShardedBot = commands.AutoShardedBot(
+bot: commands.Bot = commands.Bot(
     command_prefix=commands.when_mentioned_or(*config["prefixes"]),
     case_insensitive=config["case-insensitive"],
     description=config["description"],
@@ -133,20 +133,7 @@ async def ping(
 ):
     """Test the internet connection of the bot."""
     await ctx.send(
-        "Pong!\n{}".format(
-            "\n".join(
-                [
-                    "Pinging shard {} took {}ms.".format(
-                        shard_id,
-                        round(latency * 1000),
-                    )
-                    for (
-                        shard_id,
-                        latency,
-                    ) in bot.latencies
-                ]
-            ),
-        )
+        "Pong! The ping took {} milliseconds.".format(round(bot.latency * 1000))
     )
 
 
