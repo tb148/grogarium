@@ -44,7 +44,7 @@ logging.basicConfig(
     level=40 - 10 * verbosity,
     filename=logfile,
 )
-bot: commands.AutoShardedAutoShardedBot = commands.AutoShardedAutoShardedBot(
+bot: commands.AutoShardedBot = commands.AutoShardedBot(
     command_prefix=commands.when_mentioned_or(*config["prefixes"]),
     case_insensitive=config["case-insensitive"],
     description=config["description"],
