@@ -19,7 +19,7 @@ class Imag(
 
     def __init__(
         self,
-        bot: commands.Bot,
+        bot: commands.AutoShardedBot,
     ):
         """Initialize the cog."""
         self.bot = bot
@@ -101,14 +101,14 @@ class Imag(
 
 
 def setup(
-    bot: commands.Bot,
+    bot: commands.AutoShardedBot,
 ):
     """Add the cog to the bot."""
     bot.add_cog(Imag(bot))
 
 
 def teardown(
-    bot: commands.Bot,
+    bot: commands.AutoShardedBot,
 ):
     """Remove the cog from the bot."""
     bot.remove_cog(config["imag"]["name"])

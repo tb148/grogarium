@@ -19,7 +19,7 @@ class Util(
 
     def __init__(
         self,
-        bot: commands.Bot,
+        bot: commands.AutoShardedBot,
     ):
         """Initialize the cog."""
         self.bot = bot
@@ -97,14 +97,14 @@ class Util(
 
 
 def setup(
-    bot: commands.Bot,
+    bot: commands.AutoShardedBot,
 ):
     """Add the cog to the bot."""
     bot.add_cog(Util(bot))
 
 
 def teardown(
-    bot: commands.Bot,
+    bot: commands.AutoShardedBot,
 ):
     """Remove the cog from the bot."""
     bot.remove_cog(config["util"]["name"])
