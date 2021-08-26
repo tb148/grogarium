@@ -688,6 +688,14 @@ docutils = "*"
 mistune = "*"
 
 [[package]]
+name = "mahjong"
+version = "1.2.0.dev6"
+description = "Mahjong hands calculation"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "markupsafe"
 version = "1.1.1"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -1286,7 +1294,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "423876cf9ad1bf3534f62002361fe969b544f17eb02c978744ac387e56e03739"
+content-hash = "7bf1677129878508898883f98b8877341e2e6911a71e9bfb3074ab3b44b23cdf"
 
 [metadata.files]
 aiohttp = [
@@ -1651,6 +1659,10 @@ lockfile = [
 ]
 m2r = [
     {file = "m2r-0.2.1.tar.gz", hash = "sha256:bf90bad66cda1164b17e5ba4a037806d2443f2a4d5ddc9f6a5554a0322aaed99"},
+]
+mahjong = [
+    {file = "mahjong-1.2.0.dev6-py3-none-any.whl", hash = "sha256:468cf5b5113597e594f54705732c904078b56e519da26a93a7e953622aa1516d"},
+    {file = "mahjong-1.2.0.dev6.tar.gz", hash = "sha256:f6243ac01710336bd1909d8d8f2d166f1bfc45b2fb65b991080f548fb0de0597"},
 ]
 markupsafe = [
     {file = "MarkupSafe-1.1.1-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:09027a7803a62ca78792ad89403b1b7a73a01c8cb65909cd876f7fcebd79b161"},
