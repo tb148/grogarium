@@ -176,15 +176,15 @@ lyrics = [
     "Or in the end, you will be nothing",
     "It's too cold",
     "Standing in the middle of the downpour",
-    "Looking in The mirror cuz it's only you",
+    "Looking in the mirror cuz it's only you",
     "That you have to lose",
     "Heading back with only one way",
-    "Trying to stop from running But you can't wait",
+    "Trying to stop from running but you can't wait",
     "Bury all the evidence",
     "You'll only learn",
     "When you crash and burn"
 ]
-freq = 1
+freq = 5
 
 [imag]
 name = "Imaginary Image"
