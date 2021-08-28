@@ -1,4 +1,5 @@
 """Fun commands that are not games."""
+import asyncio
 import typing
 import datetime
 import googletrans
@@ -207,6 +208,18 @@ class Fun(
                 ),
             )
         )
+
+    @commands.command(
+        name="burn",
+        enabled=config["burn"]["enabled"],
+        hidden=config["burn"]["hidden"],
+        help=config["burn"]["help"],
+        aliases=config["burn"]["aliases"],
+    )
+    async def burn(self, ctx: commands.Context):
+        for s in config["burn"]["lyrics"]:
+            await asyncio.sleep(config["burn"]["freq"])
+            await ctx.send(s)
 
 
 def setup(
